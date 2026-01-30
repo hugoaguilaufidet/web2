@@ -1,2 +1,2 @@
 # web2
-version 2 de espacios udifet
+Versión 2 de Espacios UFIDeT
