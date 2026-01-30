@@ -1,10 +1,200 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Mi Primera Página</title>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Espacios - Conectando Mentes</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Font Awesome for Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<!-- Google Fonts: Roboto -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration for Specific Colors and Fonts -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+          },
+          colors: {
+            'cyan-glow': '#00f7ff',
+            'deep-blue': '#001433',
+          },
+          boxShadow: {
+            'neon': '0 0 10px rgba(0, 247, 255, 0.5), 0 0 20px rgba(0, 247, 255, 0.3)',
+            'card-glow': '0 0 0 2px #00f7ff, 0 0 15px rgba(0, 247, 255, 0.4)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles for Gradients and Overlays -->
+<style data-purpose="custom-utilities">
+    /* Text Shadow for overlay text readability */
+    .text-shadow-strong {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Button Gradient - Vibrant Blue/Purple */
+    .btn-gradient {
+      background: linear-gradient(90deg, #0044ff 0%, #8800ff 100%);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-gradient:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(65, 105, 225, 0.5);
+    }
+
+    /* Scrollbar styling for the sidebar if content overflows */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #aaa;
+    }
+  </style>
 </head>
-<body>
-    <h1>¡Hola Mundo! Mi web en GitHub funciona.</h1>
-    <p>Este es mi primer paso como desarrollador web.</p>
-</body>
-</html>
+<body class="bg-gray-50 h-screen overflow-hidden flex font-sans font-roboto">
+<!-- BEGIN: Left Hero Section -->
+<!-- 
+    This section occupies approx 65% of the width on large screens.
+    It contains the student collage background, overlay text, and the QR code.
+  -->
+<section class="hidden lg:relative lg:flex lg:w-[65%] bg-gray-900 overflow-hidden" data-purpose="hero-section">
+<!-- Background Image Collage Simulation -->
+<!-- Using a single placeholder that represents a busy student environment as requested -->
+<img alt="Student Collaboration Collage" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvgYesWWqqzSASknHUfjrAzkZbR8ecwJ_8Bu6sGtjrvnVhzgSZIsTQ6hcQPFuuFGyaS6wHBYwaph1eK2FnZr8sEhkoMZSo_4MnTZbpoRI2p-XdTf7JhC9nQhDn052K62A3N9cTS-Rwx0GC61zRD1csT6HNnPjuCV7XPM44JcX-tfJeLjUSSDDUyGC9OUdHBiFfr5NaDg62Z0zQ6OHjcHiCGrziXqV5tGyrpEVdTLR6zD9tu2dCzF_JPgHJ2XD0U84HWFYvGuQmTTw"/>
+<!-- Dark overlay gradient to ensure text readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none"></div>
+<!-- Decorative Overlay Elements (Holographic effect simulation) -->
+<!-- Content Container -->
+<div class="relative z-10 flex flex-col justify-center h-full p-12 w-full">
+<!-- Top Left Logo (Absolute positioned within section) -->
+<div class="absolute top-8 left-8 text-white text-2xl font-bold tracking-wide drop-shadow-md" style="position: absolute; top: 30px; left: 30px; z-index: 10;">
+        Espacios
+      </div>
+<div class="flex flex-col justify-center w-full">
+<!-- Hero Text (Moved to top) -->
+<div class="max-w-xl mb-0">
+<h1 class="text-5xl xl:text-6xl font-extrabold text-white text-shadow-strong leading-[1.1]">
+            Conectando Mentes:<br/>
+            Innovación y<br/>
+            Conocimiento en IA
+        </h1>
+</div>
+<!-- QR Code Card (Moved to bottom) -->
+<div class="bg-white p-3 rounded-xl shadow-[0_0_20px_rgba(0,247,255,0.6)] border-[3px] border-cyan-glow flex-shrink-0 mt-[40px] w-fit">
+<img alt="QR Code" class="object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDbtVJGnX7rLL0-m0PABu4sNIUxRB-I67RQ05q8D6QsRgfmTWf9PSGnaSeW_GDtRwzpnJvIeeS4dxqm3vJe1dm9_J4edvwqC-qQ7MJSWekB1H2zz6po6otVqqimvLyXThyFBPFLAIdURAsKeo-wvo-qvZpKVLmgnpK-bZQ82176Oxb7Q9ce1_fQzdUw6zG1s2fKK0nuyEhH4OaeBVqa5ikVIw0ILaXh_ljFe5ILdajjErp5KgQKVb_f2oFUv5NlcC1MBWbW7bDJck" style="width: 220px; height: auto;"/>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Left Hero Section -->
+<!-- BEGIN: Right Sidebar Section -->
+<!-- 
+    This section occupies approx 35% of the width.
+    It contains the navigation and the list of course cards.
+  -->
+<aside class="w-full lg:w-[35%] bg-white h-full flex flex-col shadow-2xl relative z-20" data-purpose="sidebar-section">
+<!-- Header / Navigation -->
+<header class="flex justify-between items-center px-6 py-5 border-b border-gray-100 bg-white z-10">
+<!-- Mobile Logo (visible only on small screens) -->
+<div class="lg:hidden text-gray-800 text-xl font-bold">
+        Espacios
+      </div>
+<!-- Navigation Links -->
+<div class="ml-auto flex items-center gap-4 text-gray-700">
+<button class="flex items-center gap-2 hover:text-blue-600 transition-colors text-sm font-medium">
+          Página principal
+          <i class="fa-solid fa-chevron-down text-xs"></i>
+</button>
+<button class="text-purple-600 hover:text-purple-800 transition-colors p-2 rounded-full hover:bg-purple-50">
+<i class="fa-solid fa-magnifying-glass text-lg"></i>
+</button>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<main class="flex-1 overflow-y-auto custom-scrollbar p-6 bg-white">
+<div class="space-y-8">
+<!-- Card 1: Fundamentos de IA -->
+<article class="flex gap-4 p-4 rounded-2xl bg-white shadow-card-glow border border-cyan-100 transition-all hover:scale-[1.01]">
+<div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-black">
+<img alt="Fundamentos de IA" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe0gEpTR2HiXvVENCxW0EJidkHYC06qFJ8wFRAJvGRQ-U9X4z-qpqGtcmNL0JAPYsqSzh0Oqc-8gic8nh_cGYH1-n7hbulSSYtg0y16SSlusQ66pJqhpNTwvM1iUVnknp_xUZQy5q5SjTrsVlv4tlijJ0ykB5pyQ4Cw2cZvovgS90nSRevbZ0vQ5zU-BVAfJ8JqSi7McmpldlLHvFjWuBcLWRFHs1gBd-2hE5ykHgrVw2JcFOvBZaylI8lba18vETqOmfDKeOfx-I"/>
+</div>
+<div class="flex flex-col justify-between flex-1">
+<div>
+<h3 class="font-bold text-gray-900 text-lg leading-tight mb-1">Fundamentos de IA</h3>
+<p class="text-gray-600 text-sm leading-snug">Descubrí los principios clave de la inteligencia artificial.</p>
+</div>
+<div class="mt-3">
+<button class="btn-gradient text-white text-xs font-bold py-2 px-6 rounded-full inline-block">
+                Conocé más
+              </button>
+</div>
+</div>
+</article>
+<!-- Card 2: Data Science -->
+<article class="flex gap-4 p-4 rounded-2xl bg-white shadow-card-glow border border-cyan-100 transition-all hover:scale-[1.01]">
+<div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-black">
+<img alt="Data Science" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWPdnEjdN5GAXEl7XzmUoXCnIlmplJSpvx1Ta0cLsNHcA95Qq5E_PgG4AdBqbCuYylOE5wOR7F_1WLhLl7xKvBAwf8nrl-HsWlaldccfmo98ML2P6zxTUWR8ovkAkJIUvb-TW1OHX-rF4A6XznySm3Ye6JIqocj-LADvYDholmGRc_mjIy5nyvVwZcZQ0Ws4iQWGuv7uIQ9VU881NAQB9v9V8Su5qdlcQSWwwvjNi_cAo2hyB6EvpCphMksDgyJ5e6N5EDISwt3Cw"/>
+</div>
+<div class="flex flex-col justify-between flex-1">
+<div>
+<h3 class="font-bold text-gray-900 text-lg leading-tight mb-1">Data Science &amp; Big Data</h3>
+<p class="text-gray-600 text-sm leading-snug">Analizá y visualizá grandes conjuntos de datos.</p>
+</div>
+<div class="mt-3">
+<button class="btn-gradient text-white text-xs font-bold py-2 px-6 rounded-full inline-block">
+                Conocé más
+              </button>
+</div>
+</div>
+</article>
+<!-- Card 3: Robótica -->
+<article class="flex gap-4 p-4 rounded-2xl bg-white shadow-card-glow border border-cyan-100 transition-all hover:scale-[1.01]">
+<div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-black">
+<img alt="Robótica" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpRK5mTxhHteBtGHnQETZLfBTS6MdTbioOj_1_w2hhGoy899_hsAUqG1j0XcXAy4CDfZQHiF8xtCQJDfkEIKpCXBdocyR6W5Hns4MoytbLFsgARuBDlHthjrYrKtI0P236LFVeYyrIEJLu19vpJua63lZH3t1bIIUa-bwg9pDtGKbgj0q6qtwqyCT7IPJ525r0DYLi6zInNqPXAkydcvgWug7gAn_LRia10Xn1lvzTbo_XVtxXFeIpSTaI_qyZ4_ISXENe1f_DFew"/>
+</div>
+<div class="flex flex-col justify-between flex-1">
+<div>
+<h3 class="font-bold text-gray-900 text-lg leading-tight mb-1">Robótica y Automatización</h3>
+<p class="text-gray-600 text-sm leading-snug">Diseñá y programá sistemas inteligentes.</p>
+</div>
+<div class="mt-3">
+<button class="btn-gradient text-white text-xs font-bold py-2 px-6 rounded-full inline-block">
+                Conocé más
+              </button>
+</div>
+</div>
+</article>
+<!-- Card 4: Ética -->
+<article class="flex gap-4 p-4 rounded-2xl bg-white shadow-card-glow border border-cyan-100 transition-all hover:scale-[1.01]">
+<div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-black">
+<img alt="Ética en IA" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPlZC82Tos5Q_7mbl5VPfRbFyEEq96gcmkOsDQiA6iq0u7FNDFkBk59iL75VmXHs2cQpwHNbwAzBV_e5t91pJ0inV4d9_DNVqQmlJaMzXaWi58K2280pj6JeZl1CciLsI8yJUh8XDsZiV8YNqgyJYJNwoTnw2gnwUhimH058GqpN0tDh8cwes8f2TueSALuXb-Y6JKumOMrf9I1RLJiMrO5f__o99gY_9-qxBiEMQGWOlqPfGFooxTrYMk_u_WPF5g-H9O06MiElQ"/>
+</div>
+<div class="flex flex-col justify-between flex-1">
+<div>
+<h3 class="font-bold text-gray-900 text-lg leading-tight mb-1">Ética en IA</h3>
+<p class="text-gray-600 text-sm leading-snug">Comprendé el impacto social y ético.</p>
+</div>
+<div class="mt-3">
+<button class="btn-gradient text-white text-xs font-bold py-2 px-6 rounded-full inline-block">
+                Conocé más
+              </button>
+</div>
+</div>
+</article>
+</div>
+</main>
+</aside>
+<!-- END: Right Sidebar Section -->
+</body></html>
