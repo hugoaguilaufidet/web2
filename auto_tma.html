@@ -5,34 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autotrónica - U.F.I.De.T.</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap'); body { font-family: 'Inter', sans-serif; }</style>
 </head>
 <body class="bg-black text-white p-8 lg:p-20">
 
-    <a href="index.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-10 transition-all">
-        <span class="mr-2">←</span> Volver al inicio
+    <a href="index.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-10 transition-all font-bold">
+        <span class="mr-2">←</span> Volver al Panel Principal
     </a>
 
-    <header class="mb-12">
-        <h1 class="text-5xl font-black text-white">Autotrónica</h1>
+    <header class="mb-12 border-l-4 border-cyan-500 pl-6">
+        <h1 class="text-5xl font-black italic uppercase tracking-tighter">Autotrónica</h1>
         <p class="text-cyan-500 text-xl font-light">Taller de Máquinas y Herramientas Básicas</p>
     </header>
 
-    <main class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <section class="bg-[#111] p-8 rounded-3xl border border-white/5">
-            <h2 class="text-2xl font-bold mb-4">Objetivos del Taller</h2>
-            <ul class="space-y-3 text-gray-400">
-                <li>• Uso de herramientas de precisión.</li>
-                <li>• Mantenimiento preventivo de sistemas.</li>
-                <li>• Diagnóstico electrónico automotriz.</li>
+    <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <section class="bg-[#111111] p-8 rounded-3xl border border-white/5 shadow-2xl">
+            <h2 class="text-2xl font-bold mb-6 text-cyan-400">Contenidos del Módulo</h2>
+            <p class="text-gray-400 leading-relaxed text-justify mb-6">
+                Este espacio se centra en la adquisición de competencias para el manejo de instrumental y maquinaria pesada aplicada al sector automotriz moderno. Los alumnos aprenden a diagnosticar, reparar y mecanizar piezas con precisión técnica.
+            </p>
+            <ul class="space-y-4">
+                <li class="flex items-center gap-3"><span class="text-cyan-500 font-bold">✔</span> Metrología y herramientas de precisión.</li>
+                <li class="flex items-center gap-3"><span class="text-cyan-500 font-bold">✔</span> Tornería y fresado básico.</li>
+                <li class="flex items-center gap-3"><span class="text-cyan-500 font-bold">✔</span> Soldadura y unión de componentes.</li>
             </ul>
         </section>
 
-        <div class="rounded-3xl bg-gray-900 h-64 overflow-hidden border border-white/10">
-             <div class="flex items-center justify-center h-full text-gray-600 italic">
-                 [Imagen del Taller de Autotrónica]
-             </div>
+        <div class="rounded-3xl bg-[#0a0a0a] border border-cyan-500/20 flex flex-col items-center justify-center p-10 text-center shadow-lg shadow-cyan-500/5">
+            <div class="text-7xl mb-6">🔧</div>
+            <h3 class="text-2xl font-bold text-white">Área de Mecanizado</h3>
+            <p class="text-gray-500 mt-2 italic text-sm">Entorno de formación técnica especializada.</p>
         </div>
+
     </main>
+
+    <footer class="mt-16 pt-8 border-t border-white/5">
+        <p class="flex items-center gap-2 text-cyan-500 font-bold text-sm uppercase tracking-widest">
+            <span class="text-xl">🛠️</span> Docentes a cargo
+        </p>
+    </footer>
 
 </body>
 </html>
