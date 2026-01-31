@@ -31,7 +31,7 @@
             color: #1a1a1a;
         }
 
-        /* TÍTULO CON DEGRADADO */
+        /* TÍTULO CON DEGRADADO - FIX PARA LA "S" */
         .text-gradient-cyan {
             background: linear-gradient(90deg, var(--cyan-electric), var(--blue-deep), var(--cyan-electric));
             background-size: 200% auto;
@@ -39,6 +39,9 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 4s linear infinite;
+
+            /* SOLUCIÓN AL RECORTE: 
+               inline-block permite que el padding expanda el área de renderizado del degradado */
             display: inline-block;
             padding-right: 0.15em;
             margin-right: -0.15em;
@@ -70,31 +73,6 @@
             border-color: var(--cyan-electric);
             transform: translateY(-5px);
             box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
-        }
-
-        /* EFECTO VIBRACIÓN (SHAKE) PARA BLOQUEADOS */
-        @keyframes shake-lock {
-
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-
-            25% {
-                transform: translateX(-4px);
-            }
-
-            50% {
-                transform: translateX(4px);
-            }
-
-            75% {
-                transform: translateX(-4px);
-            }
-        }
-
-        .shake-hover:hover {
-            animation: shake-lock 0.3s ease-in-out;
         }
 
         /* Punto titilante "En curso" */
@@ -175,7 +153,7 @@
             <p class="text-cyan-500 font-bold tracking-[0.3em] uppercase text-[10px] mb-4">Espacio de Formación en
                 Autotrónica</p>
             <h1
-                class="text-3xl md:text-5xl lg:text-7xl font-black italic uppercase tracking-tighter leading-[0.9] mb-8">
+                class="text-3xl md:text-5xl lg:text-6xl font-black italic uppercase tracking-tighter leading-[0.9] mb-8">
                 Taller de <br>
                 <span class="text-gradient-cyan">Máquinas & Herramientas Básicas I</span>
             </h1>
@@ -186,126 +164,135 @@
                 </a>
                 <a href="#proyectos"
                     class="bg-white/5 border border-white/10 text-current py-4 px-10 rounded-xl text-xs uppercase font-bold hover:bg-white/10 transition-all">
-                    Salon de la Fama
+                    Hall of Fame
                 </a>
             </div>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-6 space-y-24 pb-32">
-
         <section id="clases">
             <div class="flex items-end justify-between mb-10 border-b border-cyan-500/20 pb-6">
                 <h2 class="text-2xl font-black uppercase italic tracking-tighter">Ruta de Formación</h2>
                 <div class="hidden md:flex items-center gap-3">
-                    <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest">Estado del cuatrimestre:</span>
+                    <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest">Estado:</span>
                     <div class="w-32 h-1.5 bg-gray-800 rounded-full">
-                        <div class="bg-cyan-500 h-full w-[14%] rounded-full"></div>
+                        <div class="bg-cyan-500 h-full w-[40%] rounded-full"></div>
                     </div>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-                <a href="#" class="glass-panel p-6 rounded-[2rem] group relative">
-                    <div class="text-cyan-500 text-[10px] font-bold mb-4 flex items-center gap-2">
-                        <div class="dot-pulse"></div> EN CURSO
-                    </div>
+                <a href="#" class="glass-panel p-6 rounded-[2rem] group">
                     <!-- <div class="text-green-500 text-[10px] font-bold mb-4 flex items-center gap-2">
                         <i class="fa-solid fa-check-double"></i> COMPLETADO
                     </div> -->
-                    <h3 class="text-xl font-bold mb-1 group-hover:text-cyan-500 transition-colors leading-tight">
-                        Presentación de la Materia</h3>
+                    <!-- /* border-cyan-500/50">*/ -->
+                    <div class="text-cyan-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <div class="dot-pulse"></div> EN CURSO
+                    </div>
+                    <h3 class="text-xl font-bold mb-1 group-hover:text-cyan-500 transition-colors">Presentación de la
+                        Materia
+                    </h3>
                     <p class="text-gray-500 text-xs font-light italic">Presentación - Herramientas - Bibliografía:
-                        Cuestionario 01</p>
+                        Cuestionario 01 </p>
                 </a>
 
-                <div
-                    class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
-                    <div
-                        class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
-                        <i class="fa-solid fa-ban"></i> Bloqueado
-                    </div>
-                    <h3 class="text-xl font-bold mb-1 italic text-gray-400">Seguridad Técnica</h3>
-                    <p class="text-gray-600 text-xs font-light italic">EPP y Herramientas Básicas: Cuestionario 02</p>
-                    <div
-                        class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                </div>
+                <a href="#" class="glass-panel p-6 rounded-[2rem] group">
+                    <!-- <div class="text-green-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-check-double"></i> COMPLETADO
+                    </div> -->
 
-                <div
-                    class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
-                    <div
-                        class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
-                        <i class="fa-solid fa-ban"></i> Bloqueado
+                    <!-- /* border-cyan-500/50">*/ -->
+                    <!-- <div class="text-cyan-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <div class="dot-pulse"></div> EN CURSO
+                    </div> -->
+
+                    <div class="glass-panel p-6 rounded-[2rem] opacity-50 cursor-not-allowed border-red-500/20">
+                        <div
+                            class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
+                            <i class="fa-solid fa-ban"></i> Proximamente...
+                        </div>
+                        <h3 class="text-xl font-bold mb-1 group-hover:text-cyan-500 transition-colors">Seguridad Técnica
+                        </h3>
+                        <p class="text-gray-500 text-xs font-light italic">EPP y Herramientas Básicas: Cuestionario 02
+                        </p>
                     </div>
-                    <h3 class="text-xl font-bold mb-1 italic text-gray-400">Metrología</h3>
-                    <p class="text-gray-600 text-xs font-light italic">Mediciones e Instrumentos de precisión:
+
+                </a>
+
+                <a href="#" class="glass-panel p-6 rounded-[2rem] group">
+                    <!-- <div class="text-green-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-check-double"></i> COMPLETADO
+                    </div> -->
+                    <!-- /* border-cyan-500/50">*/ -->
+                    <!-- <div class="text-cyan-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <div class="dot-pulse"></div> EN CURSO
+                    </div> -->
+                    <h3 class="text-xl font-bold mb-1">Metrología</h3>
+                    <p class="text-gray-400 text-xs font-light italic">Mediciones e Instrumentos de precisión:
                         Cuestionario 03.</p>
-                    <div
-                        class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                </div>
+                </a>
 
-                <div
-                    class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
-                    <div
-                        class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
-                        <i class="fa-solid fa-ban"></i> Bloqueado
-                    </div>
-                    <h3 class="text-xl font-bold mb-1 italic text-gray-400">Herramientas</h3>
-                    <p class="text-gray-600 text-xs font-light italic">Herramientas: Cuestionario 04</p>
-                    <div
-                        class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                </div>
+                <a href="#" class="glass-panel p-6 rounded-[2rem] group">
+                    <!-- <div class="text-green-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-check-double"></i> COMPLETADO
+                    </div> -->
+                    <!-- /* border-cyan-500/50">*/ -->
+                    <!-- <div class="text-cyan-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <div class="dot-pulse"></div> EN CURSO
+                    </div> -->
+                    <h3 class="text-xl font-bold mb-1">Herramientas</h3>
+                    <p class="text-gray-400 text-xs font-light italic">Herramientas: Cuestionario 04</p>
+                </a>
 
-                <div
-                    class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
-                    <div
-                        class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
-                        <i class="fa-solid fa-ban"></i> Bloqueado
-                    </div>
-                    <h3 class="text-xl font-bold mb-1 italic text-gray-400">Mantenimiento</h3>
-                    <p class="text-gray-600 text-xs font-light italic">Mantenimiento de Herramientas: Cuestionario 05
+                <a href="#" class="glass-panel p-6 rounded-[2rem] group">
+                    <!-- <div class="text-green-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-check-double"></i> COMPLETADO
+                    </div> -->
+                    <!-- /* border-cyan-500/50">*/ -->
+                    <!-- <div class="text-cyan-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <div class="dot-pulse"></div> EN CURSO
+                    </div> -->
+                    <h3 class="text-xl font-bold mb-1">Mantenimiento</h3>
+                    <p class="text-gray-400 text-xs font-light italic">Mantenimiento de Herramientas: Cuestionario 05
                     </p>
-                    <div
-                        class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                </div>
+                </a>
 
+                <a href="#" class="glass-panel p-6 rounded-[2rem] group">
+                    <!-- <div class="text-green-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-check-double"></i> COMPLETADO
+                    </div> -->
+                    <!-- /* border-cyan-500/50">*/ -->
+                    <!-- <div class="text-cyan-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <div class="dot-pulse"></div> EN CURSO
+                    </div> -->
+                    <h3 class="text-xl font-bold mb-1">Repaso de temas y conceptos</h3>
+                    <p class="text-gray-400 text-xs font-light italic">Repaso de temas y conceptos: Cuestionario 06</p>
+                </a>
+
+                <a href="#" class="glass-panel p-6 rounded-[2rem] group">
+                    <!-- <div class="text-green-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-check-double"></i> COMPLETADO
+                    </div> -->
+                    <!-- /* border-cyan-500/50">*/ -->
+                    <!-- <div class="text-cyan-500 text-[10px] font-bold mb-4 flex items-center gap-2">
+                        <div class="dot-pulse"></div> EN CURSO
+                    </div> -->
+                    <h3 class="text-xl font-bold mb-1">Presentación de proyectos</h3>
+                    <p class="text-gray-400 text-xs font-light italic">Presentación de proyectos: Cuestionario 07</p>
+                </a>
+
+                <!-- <div
+                    class="glass-panel p-6 rounded-[2rem] opacity-30 grayscale flex flex-col justify-center min-h-[130px]">
+                    <i class="fa-solid fa-lock text-gray-400 mb-2"></i>
+                    <h3 class="text-xl font-bold">Tornería Paralela</h3>
+                </div>
                 <div
-                    class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
-                    <div
-                        class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
-                        <i class="fa-solid fa-ban"></i> Bloqueado
-                    </div>
-                    <h3 class="text-xl font-bold mb-1 italic text-gray-400">Repaso General</h3>
-                    <p class="text-gray-600 text-xs font-light italic">Repaso de temas y conceptos: Cuestionario 06</p>
-                    <div
-                        class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                </div>
-
-                <div
-                    class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
-                    <div
-                        class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
-                        <i class="fa-solid fa-ban"></i> Bloqueado
-                    </div>
-                    <h3 class="text-xl font-bold mb-1 italic text-gray-400">Presentación de los Proyecto</h3>
-                    <p class="text-gray-600 text-xs font-light italic">Presentación de todos los proyectos realizados: Cuestionario 07</p>
-                    <div
-                        class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                </div>
-
+                    class="glass-panel p-6 rounded-[2rem] opacity-30 grayscale flex flex-col justify-center min-h-[130px]">
+                    <i class="fa-solid fa-lock text-gray-400 mb-2"></i>
+                    <h3 class="text-xl font-bold">Soldadura</h3>
+                </div> -->
             </div>
         </section>
 
@@ -322,12 +309,12 @@
                     <h4 class="font-bold mb-3 text-cyan-500 uppercase text-sm tracking-widest">Recursos de Clase</h4>
                     <div class="space-y-4">
                         <button
-                            class="w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-xs font-bold border border-white/10 flex items-center justify-between group">
+                            class="w-full py-3 px-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-xs font-bold border border-white/10 flex items-center justify-between group">
                             TABLA DE ROSCAS <i
                                 class="fa-solid fa-download opacity-0 group-hover:opacity-100 transition-all"></i>
                         </button>
                         <button
-                            class="w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-xs font-bold border border-white/10 flex items-center justify-between group">
+                            class="w-full py-3 px-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-xs font-bold border border-white/10 flex items-center justify-between group">
                             CALCULADORA RPM <i
                                 class="fa-solid fa-calculator opacity-0 group-hover:opacity-100 transition-all"></i>
                         </button>
@@ -388,17 +375,20 @@
             const body = document.body;
             const icon = document.getElementById('mode-icon');
             const nav = document.getElementById('navbar');
+            const desc = document.getElementById('hero-desc');
 
             if (body.classList.contains('dark-mode')) {
                 body.classList.replace('dark-mode', 'light-mode');
                 icon.classList.replace('fa-sun', 'fa-moon');
                 nav.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
                 nav.style.borderColor = 'rgba(0,0,0,0.05)';
+                desc.classList.replace('text-gray-400', 'text-gray-600');
             } else {
                 body.classList.replace('light-mode', 'dark-mode');
                 icon.classList.replace('fa-moon', 'fa-sun');
                 nav.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
                 nav.style.borderColor = 'rgba(255,255,255,0.05)';
+                desc.classList.replace('text-gray-600', 'text-gray-400');
             }
         }
     </script>
