@@ -159,7 +159,7 @@
     <nav class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-white/5 px-6 py-4" id="navbar"
         style="background-color: rgba(0,0,0,0.8); backdrop-filter: blur(10px);">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html"
+            <a href="../index.html"
                 class="flex items-center gap-2 text-cyan-500 font-bold text-xs uppercase tracking-widest hover:text-blue-400">
                 <i class="fa-solid fa-arrow-left"></i> Panel Principal
             </a>
@@ -207,7 +207,8 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <a href="#" class="glass-panel p-6 rounded-[2rem] group relative">
+                <div onclick="verClase('C01')"
+                    class="glass-panel p-6 rounded-[2rem] group relative cursor-pointer transition-transform active:scale-95">
                     <div class="text-cyan-500 text-[10px] font-bold mb-4 flex items-center gap-2">
                         <div class="dot-pulse"></div> EN CURSO
                     </div>
@@ -224,12 +225,8 @@
                         <i class="fa-solid fa-lock-open"></i>
                     </div>
 
-                    <!-- <div class="text-green-500 text-[10px] font-bold mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-check-double"></i> COMPLETADO
-                    </div> -->
+                </div>
 
-                </a>
-                <!-- Tarjeta de Seguridad Tecnica -->
                 <div
                     class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
                     <div
@@ -280,7 +277,8 @@
                         <i class="fa-solid fa-ban"></i> Bloqueado
                     </div>
                     <h3 class="text-xl font-bold mb-1 italic text-gray-400">Mantenimiento?</h3>
-                    <p class="text-gray-600 text-xs font-light italic">Si, darle mantenimiento a tus herramientas es fundamental: Cuestionario 05
+                    <p class="text-gray-600 text-xs font-light italic">Si, darle mantenimiento a tus herramientas es
+                        fundamental: Cuestionario 05
                     </p>
                     <div
                         class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
