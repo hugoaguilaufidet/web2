@@ -333,6 +333,11 @@
                             CALCULADORA RPM <i
                                 class="fa-solid fa-calculator opacity-0 group-hover:opacity-100 transition-all"></i>
                         </button>
+                        <button 
+                           class="w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-xs font-bold border border-white/10 flex items-center justify-between group">
+                           DRIVE DE LA MATERIA <i class="fa-brands fa-google-drive opacity-0 group-hover:opacity-100 transition-all"></i>
+                         </button>
+
                     </div>
                 </div>
             </div>
@@ -411,17 +416,23 @@
                         <i class="fa-solid fa-arrow-left"></i> Volver al Dashboard
                     </button>
                     <header class="mb-12">
-                        <h2 class="text-5xl font-black italic uppercase text-white leading-none">C01: Presentación</h2>
+                     
                         <div class="h-1 w-32 bg-cyan-500 mt-4"></div>
                     </header>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div class="glass-panel p-8 rounded-[2.5rem] border-white/5 space-y-6">
-                            <h4 class="text-cyan-500 font-bold text-xs uppercase tracking-[0.2em]">01. Temas en desarrollo</h4>
+                            <h4 class="text-cyan-500 font-bold text-xs uppercase tracking-[0.2em]">01. Presentación - Herramientas - Bibliografía: Cuestionario 01  </h4>
                             <div class="space-y-3">
                                 ${itemExcel("Inscripción en Classroom", "Siga los siguientes pasos que se indican a continuacion", "fa-user-plus", 
-                                "1. Instale Classroom en su celular.<br>2. En Classroom incribase con el código ADFE.<br>3.Verifique si recibio un e-mail con la confirmacion de su inscripcion.<br>4. Confirme con el docente su inscripcion a esta materia.")}
-                                ${itemExcel("Programa TMA 2026", "Estructura de la materia y contenidos", "fa-file-lines")}
-                                ${itemExcel("¿Qué es el TMA?", "Importancia del espacio", "fa-car-side")}
+                                 "1. Instale Classroom en su celular.<br>\
+                                 2. En Classroom incribase con el código ADFE.<br>\
+                                 3. Verifique si recibio un e-mail con la confirmacion de su inscripcion.<br>\
+                                 4. Confirme con el docente su inscripcion a esta materia. ")}
+                                ${itemExcel("Programa TMA 2026", "Estructura de la materia y contenidos", "fa-user-plus", 
+                                "1. Puede descargar el Programa de este Materia desde el Drive la materia haciendo click en la Ventana 04. Bibliografia y Recursos.")}
+                                ${itemExcel("¿Qué es el TMA?", "Importancia del espacio", "fa-car-side", 
+                                "EL TMA es un trayecto formativo que integra seguridad industrial, metrología de precisión y técnicas de mecanizado, ajuste, herreria y soldadura.<br><br>\
+                                A través de prácticas en el uso de herramientas variadas, los alumnos desarrollan destreza técnica para ejecutar proyectos reales y el mantenimiento de equipos.")}
                                 ${itemExcel("Evaluaciones", "¿Cómo aprobamos?", "fa-clipboard-check")}
                                 ${itemExcel("Proyecto Final", "Idea, integrantes y fechas clave", "fa-diagram-project")}
                             </div>
