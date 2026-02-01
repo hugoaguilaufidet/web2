@@ -20,8 +20,15 @@
             scroll-behavior: smooth;
         }
 
-        body.dark-mode { background-color: #000; color: white; }
-        body.light-mode { background-color: #f0f4f8; color: #1a1a1a; }
+        body.dark-mode {
+            background-color: #000;
+            color: white;
+        }
+
+        body.light-mode {
+            background-color: #f0f4f8;
+            color: #1a1a1a;
+        }
 
         .text-gradient-cyan {
             background: linear-gradient(90deg, var(--cyan-electric), var(--blue-deep), var(--cyan-electric));
@@ -32,11 +39,26 @@
             animation: shine 4s linear infinite;
         }
 
-        @keyframes shine { to { background-position: 200% center; } }
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
 
-        .glass-panel { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(0, 255, 255, 0.1); }
-        .dark-mode .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); }
-        .light-mode .glass-panel { background: rgba(255, 255, 255, 0.9); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); }
+        .glass-panel {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .dark-mode .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+        }
+
+        .light-mode .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
 
         .glass-panel:hover {
             border-color: var(--cyan-electric);
@@ -44,36 +66,91 @@
             box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
         }
 
-        .shake-hover:hover { animation: shake-lock 0.3s ease-in-out; }
+        .shake-hover:hover {
+            animation: shake-lock 0.3s ease-in-out;
+        }
+
         @keyframes shake-lock {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-4px); }
-            50% { transform: translateX(4px); }
-            75% { transform: translateX(-4px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-4px);
+            }
+
+            50% {
+                transform: translateX(4px);
+            }
+
+            75% {
+                transform: translateX(-4px);
+            }
         }
 
         .dot-pulse {
-            width: 8px; height: 8px; background-color: var(--cyan-electric); border-radius: 50%;
+            width: 8px;
+            height: 8px;
+            background-color: var(--cyan-electric);
+            border-radius: 50%;
             animation: pulse-cyan 1.5s infinite;
         }
+
         @keyframes pulse-cyan {
-            0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 255, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);
+            }
         }
 
         #mode-toggle {
-            position: fixed; bottom: 30px; right: 30px; z-index: 100;
-            width: 55px; height: 55px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
         }
-        .dark-mode #mode-toggle { background: white; color: black; }
-        .light-mode #mode-toggle { background: black; color: white; }
+
+        .dark-mode #mode-toggle {
+            background: white;
+            color: black;
+        }
+
+        .light-mode #mode-toggle {
+            background: black;
+            color: white;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body class="dark-mode">
+
+    <div id="custom-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center px-4">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="cerrarModal()"></div>
+        <div class="glass-panel p-8 rounded-[2.5rem] border-cyan-500/50 bg-[#0a0a0a] max-w-sm w-full relative z-10 scale-100 transition-all">
+            <h5 id="modal-titulo" class="text-cyan-500 font-black uppercase tracking-widest mb-4 italic text-sm"></h5>
+            <p id="modal-mensaje" class="text-white text-xs font-light leading-relaxed mb-6"></p>
+            <button onclick="cerrarModal()" class="w-full py-4 bg-cyan-500 text-black font-black rounded-xl uppercase text-[10px] tracking-widest hover:bg-white transition-all shadow-lg shadow-cyan-500/20">
+                Entendido
+            </button>
+        </div>
+    </div>
 
     <div id="vista-clase" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-2xl overflow-y-auto">
         <div id="contenido-dinamico" class="max-w-7xl mx-auto px-6 py-20"></div>
@@ -83,26 +160,35 @@
         <i id="mode-icon" class="fa-solid fa-sun"></i>
     </div>
 
-    <nav class="fixed top-0 w-full z-50 border-b border-white/5 px-6 py-4" id="navbar" style="background-color: rgba(0,0,0,0.8); backdrop-filter: blur(10px);">
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 px-6 py-4" id="navbar"
+        style="background-color: rgba(0,0,0,0.8); backdrop-filter: blur(10px);">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="../index.html" class="flex items-center gap-2 text-cyan-500 font-bold text-xs uppercase tracking-widest hover:text-blue-400">
+            <a href="../index.html"
+                class="flex items-center gap-2 text-cyan-500 font-bold text-xs uppercase tracking-widest hover:text-blue-400">
                 <i class="fa-solid fa-arrow-left"></i> Panel Principal
             </a>
             <div class="flex items-center gap-3">
-                <span class="text-cyan-500 font-black italic">TMA <span class="text-xs font-light not-italic text-gray-500">v2026</span></span>
+                <span class="text-cyan-500 font-black italic">TMA <span
+                        class="text-xs font-light not-italic text-gray-500">v2026</span></span>
             </div>
         </div>
     </nav>
 
     <header class="relative pt-40 pb-20 px-6 overflow-hidden">
         <div class="max-w-6xl mx-auto">
-            <p class="text-cyan-500 font-bold tracking-[0.3em] uppercase text-[10px] mb-4">Espacio de Formación en Autotrónica</p>
-            <h1 class="text-3xl md:text-5xl lg:text-7xl font-black italic uppercase tracking-tighter leading-[0.9] mb-8">
+            <p class="text-cyan-500 font-bold tracking-[0.3em] uppercase text-[10px] mb-4">Espacio de Formación en
+                Autotrónica</p>
+            <h1
+                class="text-3xl md:text-5xl lg:text-7xl font-black italic uppercase tracking-tighter leading-[0.9] mb-8">
                 Taller de <br> <span class="text-gradient-cyan">Máquinas & Herramientas Básicas I</span>
             </h1>
             <div class="flex flex-wrap gap-4">
-                <a href="#clases" class="bg-cyan-500 hover:bg-cyan-400 text-black font-black py-4 px-10 rounded-xl transition-all shadow-lg shadow-cyan-500/20 text-xs uppercase tracking-widest">Ir a Clases</a>
-                <a href="#proyectos" class="bg-white/5 border border-white/10 text-current py-4 px-10 rounded-xl text-xs uppercase font-bold hover:bg-white/10 transition-all">Salon de la Fama</a>
+                <a href="#clases"
+                    class="bg-cyan-500 hover:bg-cyan-400 text-black font-black py-4 px-10 rounded-xl transition-all shadow-lg shadow-cyan-500/20 text-xs uppercase tracking-widest">Ir
+                    a Clases</a>
+                <a href="#proyectos"
+                    class="bg-white/5 border border-white/10 text-current py-4 px-10 rounded-xl text-xs uppercase font-bold hover:bg-white/10 transition-all">Salon
+                    de la Fama</a>
             </div>
         </div>
     </header>
@@ -113,7 +199,8 @@
             <div class="flex items-end justify-between mb-10 border-b border-cyan-500/20 pb-6">
                 <h2 class="text-2xl font-black uppercase italic tracking-tighter">Ruta de Formación</h2>
                 <div class="hidden md:flex items-center gap-3">
-                    <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest">Estado del cuatrimestre:</span>
+                    <span class="text-[10px] font-bold opacity-50 uppercase tracking-widest">Estado del
+                        cuatrimestre:</span>
                     <div class="w-32 h-1.5 bg-gray-800 rounded-full">
                         <div class="bg-cyan-500 h-full w-[14%] rounded-full"></div>
                     </div>
@@ -121,55 +208,104 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div onclick="verClase('C01')" class="glass-panel p-6 rounded-[2rem] group relative cursor-pointer active:scale-95">
+                <div onclick="verClase('C01')"
+                    class="glass-panel p-6 rounded-[2rem] group relative cursor-pointer active:scale-95">
                     <div class="text-cyan-500 text-[10px] font-bold mb-4 flex items-center gap-2">
                         <div class="dot-pulse"></div> EN CURSO
                     </div>
-                    <h3 class="text-xl font-bold mb-1 group-hover:text-cyan-500 transition-colors leading-tight">Presentación de la Materia</h3>
-                    <p class="text-gray-500 text-xs font-light italic">Presentación - Herramientas - Bibliografía: Cuestionario 01</p>
-                    <div class="absolute top-4 right-6 text-cyan-500/40 group-hover:text-cyan-500 transition-all"><i class="fa-solid fa-lock-open"></i></div>
+                    <h3 class="text-xl font-bold mb-1 group-hover:text-cyan-500 transition-colors leading-tight">
+                        Presentación de la Materia</h3>
+                    <p class="text-gray-500 text-xs font-light italic">Presentación - Herramientas - Bibliografía:
+                        Cuestionario 01</p>
+                    <div class="absolute top-4 right-6 text-cyan-500/40 group-hover:text-cyan-500 transition-all"><i
+                            class="fa-solid fa-lock-open"></i></div>
                 </div>
 
-                <div class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
-                    <div class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest"><i class="fa-solid fa-ban"></i> Bloqueado</div>
+                <div
+                    class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
+                    <div
+                        class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
+                        <i class="fa-solid fa-ban"></i> Bloqueado
+                    </div>
                     <h3 class="text-xl font-bold mb-1 italic text-gray-400">Seguridad Técnica</h3>
                     <p class="text-gray-600 text-xs font-light italic">EPP y Herramientas Básicas: Cuestionario 02</p>
-                    <div class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-lock"></i></div>
+                    <div
+                        class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
                 </div>
 
-                <div class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
-                    <div class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest"><i class="fa-solid fa-ban"></i> Bloqueado</div>
+                <div
+                    class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
+                    <div
+                        class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
+                        <i class="fa-solid fa-ban"></i> Bloqueado
+                    </div>
                     <h3 class="text-xl font-bold mb-1 italic text-gray-400">Metrología</h3>
-                    <p class="text-gray-600 text-xs font-light italic">Mediciones e Instrumentos de precisión: Cuestionario 03.</p>
-                    <div class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-lock"></i></div>
+                    <p class="text-gray-600 text-xs font-light italic">Mediciones e Instrumentos de precisión:
+                        Cuestionario 03.</p>
+                    <div
+                        class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
                 </div>
 
-                <div class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
-                    <div class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest"><i class="fa-solid fa-ban"></i> Bloqueado</div>
+                <div
+                    class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
+                    <div
+                        class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
+                        <i class="fa-solid fa-ban"></i> Bloqueado
+                    </div>
                     <h3 class="text-xl font-bold mb-1 italic text-gray-400">Herramientas</h3>
                     <p class="text-gray-600 text-xs font-light italic">Herramientas: Cuestionario 04</p>
-                    <div class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-lock"></i></div>
+                    <div
+                        class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
                 </div>
 
-                <div class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
-                    <div class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest"><i class="fa-solid fa-ban"></i> Bloqueado</div>
+                <div
+                    class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
+                    <div
+                        class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
+                        <i class="fa-solid fa-ban"></i> Bloqueado
+                    </div>
                     <h3 class="text-xl font-bold mb-1 italic text-gray-400">Mantenimiento?</h3>
-                    <p class="text-gray-600 text-xs font-light italic">Si, darle mantenimiento a tus herramientas es fundamental: Cuestionario 05</p>
-                    <div class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-lock"></i></div>
+                    <p class="text-gray-600 text-xs font-light italic">Si, darle mantenimiento a tus herramientas es
+                        fundamental: Cuestionario 05</p>
+                    <div
+                        class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
                 </div>
 
-                <div class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
-                    <div class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest"><i class="fa-solid fa-ban"></i> Bloqueado</div>
+                <div
+                    class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
+                    <div
+                        class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
+                        <i class="fa-solid fa-ban"></i> Bloqueado
+                    </div>
                     <h3 class="text-xl font-bold mb-1 italic text-gray-400">Repaso General</h3>
                     <p class="text-gray-600 text-xs font-light italic">Repaso de temas y conceptos: Cuestionario 06</p>
-                    <div class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-lock"></i></div>
+                    <div
+                        class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
                 </div>
 
-                <div class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
-                    <div class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest"><i class="fa-solid fa-ban"></i> Bloqueado</div>
+                <div
+                    class="glass-panel p-6 rounded-[2rem] opacity-40 grayscale shake-hover cursor-not-allowed group relative border-red-500/20">
+                    <div
+                        class="text-red-500 text-[10px] font-bold mb-4 flex items-center gap-2 uppercase tracking-widest">
+                        <i class="fa-solid fa-ban"></i> Bloqueado
+                    </div>
                     <h3 class="text-xl font-bold mb-1 italic text-gray-400">Presentación de los Proyecto</h3>
-                    <p class="text-gray-600 text-xs font-light italic">Presentación de todos los proyectos realizados: Cuestionario 07</p>
-                    <div class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-lock"></i></div>
+                    <p class="text-gray-600 text-xs font-light italic">Presentación de todos los proyectos realizados:
+                        Cuestionario 07</p>
+                    <div
+                        class="absolute top-4 right-6 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
                 </div>
 
             </div>
@@ -179,18 +315,23 @@
             <div class="lg:col-span-2">
                 <h3 class="text-xl font-black uppercase italic mb-6 text-cyan-500 tracking-widest">Video del Día</h3>
                 <div class="aspect-video rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-black">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/8aArsTX5wVo" title="Herramientas" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/8aArsTX5wVo" title="Herramientas"
+                        frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="space-y-6 flex flex-col justify-center">
                 <div class="p-8 rounded-[2rem] bg-cyan-500/5 border border-cyan-500/20 glass-panel">
                     <h4 class="font-bold mb-3 text-cyan-500 uppercase text-sm tracking-widest">Recursos de Clase</h4>
                     <div class="space-y-4">
-                        <button class="w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-xs font-bold border border-white/10 flex items-center justify-between group">
-                            TABLA DE ROSCAS <i class="fa-solid fa-download opacity-0 group-hover:opacity-100 transition-all"></i>
+                        <button
+                            class="w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-xs font-bold border border-white/10 flex items-center justify-between group">
+                            TABLA DE ROSCAS <i
+                                class="fa-solid fa-download opacity-0 group-hover:opacity-100 transition-all"></i>
                         </button>
-                        <button class="w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-xs font-bold border border-white/10 flex items-center justify-between group">
-                            CALCULADORA RPM <i class="fa-solid fa-calculator opacity-0 group-hover:opacity-100 transition-all"></i>
+                        <button
+                            class="w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-xs font-bold border border-white/10 flex items-center justify-between group">
+                            CALCULADORA RPM <i
+                                class="fa-solid fa-calculator opacity-0 group-hover:opacity-100 transition-all"></i>
                         </button>
                     </div>
                 </div>
@@ -202,22 +343,31 @@
                 <i class="fa-solid fa-trophy text-yellow-500"></i> Salon de la Fama
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="group relative h-[350px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1000&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-110">
+                <div
+                    class="group relative h-[350px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1000&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-8">
-                        <span class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest">Nivel 2 • 2025</span>
+                        <span class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest">Nivel 2 •
+                            2025</span>
                         <h4 class="text-3xl font-black italic uppercase text-white">Prensa de Taller</h4>
-                        <a href="#" class="inline-block mt-4 text-xs font-bold text-white border-b-2 border-cyan-500 pb-1 hover:text-cyan-500 transition-colors">VER DOCUMENTACIÓN</a>
+                        <a href="#"
+                            class="inline-block mt-4 text-xs font-bold text-white border-b-2 border-cyan-500 pb-1 hover:text-cyan-500 transition-colors">VER
+                            DOCUMENTACIÓN</a>
                     </div>
                 </div>
-                <div class="group relative h-[350px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45f7?q=80&w=1000&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-110">
+                <div
+                    class="group relative h-[350px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45f7?q=80&w=1000&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-8">
                         <span class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest">Nivel 3 • CNC</span>
                         <h4 class="text-3xl font-black italic uppercase text-white">Piezas de Motor</h4>
-                        <a href="#" class="inline-block mt-4 text-xs font-bold text-white border-b-2 border-cyan-500 pb-1 hover:text-cyan-500 transition-colors">VER GALERÍA</a>
+                        <a href="#"
+                            class="inline-block mt-4 text-xs font-bold text-white border-b-2 border-cyan-500 pb-1 hover:text-cyan-500 transition-colors">VER
+                            GALERÍA</a>
                     </div>
                 </div>
             </div>
@@ -227,8 +377,11 @@
     <footer class="py-16 border-t border-white/5 text-center px-6">
         <p class="text-[10px] text-gray-500 uppercase tracking-[0.6em] mb-4">U.F.I.De.T. • Autotrónica • TMA 2026</p>
         <div class="flex justify-center gap-6">
-            <a href="mailto:hugoaguila@ufidet.com.ar" class="text-gray-500 hover:text-cyan-500 transition-colors text-xl"><i class="fa-solid fa-envelope"></i></a>
-            <a href="#" class="text-gray-500 hover:text-cyan-500 transition-colors text-xl"><i class="fa-brands fa-youtube"></i></a>
+            <a href="mailto:hugoaguila@ufidet.com.ar"
+                class="text-gray-500 hover:text-cyan-500 transition-colors text-xl"><i
+                    class="fa-solid fa-envelope"></i></a>
+            <a href="#" class="text-gray-500 hover:text-cyan-500 transition-colors text-xl"><i
+                    class="fa-brands fa-youtube"></i></a>
         </div>
     </footer>
 
@@ -263,20 +416,22 @@
                     </header>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div class="glass-panel p-8 rounded-[2.5rem] border-white/5 space-y-6">
-                            <h4 class="text-cyan-500 font-bold text-xs uppercase tracking-[0.2em]">01. Gestión y Programa</h4>
+                            <h4 class="text-cyan-500 font-bold text-xs uppercase tracking-[0.2em]">01. Temas en desarrollo</h4>
                             <div class="space-y-3">
-                                ${itemExcel("Inscripción en Classroom", "Formulario de ingreso", "fa-user-plus")}
-                                ${itemExcel("Programa TMA 2026", "Estructura de la materia", "fa-file-lines")}
+                                ${itemExcel("Inscripción en Classroom", "Siga los siguientes pasos que se indican a continuacion", "fa-user-plus", 
+                                "1. Instale Classroom en su celular.<br>2. En Classroom incribase con el código ADFE.<br>3.Verifique si recibio un e-mail con la confirmacion de su inscripcion.<br>4. Confirme con el docente su inscripcion a esta materia.")}
+                                ${itemExcel("Programa TMA 2026", "Estructura de la materia y contenidos", "fa-file-lines")}
+                                ${itemExcel("¿Qué es el TMA?", "Importancia del espacio", "fa-car-side")}
                                 ${itemExcel("Evaluaciones", "¿Cómo aprobamos?", "fa-clipboard-check")}
-                                ${itemExcel("Proyecto Final", "Idea e integrantes", "fa-lightbulb")}
+                                ${itemExcel("Proyecto Final", "Idea, integrantes y fechas clave", "fa-diagram-project")}
                             </div>
                         </div>
                         <div class="glass-panel p-8 rounded-[2.5rem] border-white/5 space-y-6">
-                            <h4 class="text-cyan-500 font-bold text-xs uppercase tracking-[0.2em]">02. Taller y Normativas</h4>
+                            <h4 class="text-cyan-500 font-bold text-xs uppercase tracking-[0.2em]">02. Bibliografia</h4>
                             <div class="space-y-3">
-                                ${itemExcel("¿Qué es el TMA?", "Importancia del espacio", "fa-car-side")}
+
                                 ${itemExcel("Normas EPP", "Res. Nacional N° 896", "fa-shield-halved")}
-                                ${itemExcel("Metrología", "Conceptos básicos", "fa-ruler-combined")}
+                                ${itemExcel("Metrología para No Metrologos", "Conceptos básicos", "fa-ruler-combined")}
                             </div>
                         </div>
                         <div class="glass-panel p-8 rounded-[2.5rem] border-white/5 space-y-6">
@@ -304,17 +459,33 @@
             }
         }
 
-        function itemExcel(titulo, subtitulo, icono) {
+        // FUNCIÓN MEJORADA: LANZA EL MODAL INTERNO EN LUGAR DEL ALERT DEL NAVEGADOR
+        function itemExcel(titulo, subtitulo, icono, info = "") {
+            const hasAction = info !== "" ? `onclick="mostrarInfo('${titulo}', '${info}')"` : "";
+            const cursorClass = info !== "" ? "cursor-pointer" : "cursor-default";
+
             return `
-                <div class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all cursor-pointer group">
+                <div ${hasAction} class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all ${cursorClass} group">
                     <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black transition-all">
                         <i class="fa-solid ${icono}"></i>
                     </div>
                     <div>
                         <p class="text-xs font-bold text-white uppercase">${titulo}</p>
-                        <p class="text-[10px] text-gray-500 italic">${subtitulo}</p>
+                        <p class="text-[10px] text-gray-500 italic leading-tight">${subtitulo}</p>
                     </div>
                 </div>`;
+        }
+
+        function mostrarInfo(titulo, mensaje) {
+            const modal = document.getElementById('custom-modal');
+            document.getElementById('modal-titulo').innerText = titulo;
+            // Reemplaza los saltos de línea de texto por saltos HTML
+            document.getElementById('modal-mensaje').innerHTML = mensaje.replace(/\\n/g, '<br>');
+            modal.classList.remove('hidden');
+        }
+
+        function cerrarModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
         }
 
         function cerrarClase() {
