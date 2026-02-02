@@ -165,7 +165,7 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="../index.html"
                 class="flex items-center gap-2 text-cyan-500 font-bold text-xs uppercase tracking-widest hover:text-blue-400">
-                <i class="fa-solid fa-arrow-left"></i> Panel Principal
+                <i class="fa-solid fa-arrow-left"></i> A Panel UFIDeT
             </a>
             <div class="flex items-center gap-3">
                 <span class="text-cyan-500 font-black italic">TMA <span
@@ -174,24 +174,29 @@
         </div>
     </nav>
 
-    <header class="relative pt-40 pb-20 px-6 overflow-hidden">
-        <div class="max-w-6xl mx-auto">
-            <p class="text-cyan-500 font-bold tracking-[0.3em] uppercase text-[10px] mb-4">Espacio de Formación en
-                Autotrónica</p>
-            <h1
-                class="text-3xl md:text-5xl lg:text-7xl font-black italic uppercase tracking-tighter leading-[0.9] mb-8">
-                Taller de <br> <span class="text-gradient-cyan">Máquinas & Herramientas Básicas I</span>
-            </h1>
-            <div class="flex flex-wrap gap-4">
-                <a href="#clases"
-                    class="bg-cyan-500 hover:bg-cyan-400 text-black font-black py-4 px-10 rounded-xl transition-all shadow-lg shadow-cyan-500/20 text-xs uppercase tracking-widest">Ir
-                    a Clases</a>
-                <a href="#proyectos"
-                    class="bg-white/5 border border-white/10 text-current py-4 px-10 rounded-xl text-xs uppercase font-bold hover:bg-white/10 transition-all">Salon
-                    de la Fama</a>
-            </div>
+<header class="relative pt-40 pb-20 px-6 overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+        <p class="text-cyan-500 font-bold tracking-[0.3em] uppercase text-[10px] mb-4">
+            Espacio de Formación en Autotrónica
+        </p>
+        
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-black italic uppercase tracking-tighter leading-[1.1] mb-12">
+            Taller de <br>
+            <span class="text-gradient-cyan block mt-2">Máquinas & Herramientas Básicas I</span>
+        </h1>
+
+        <div class="flex flex-wrap gap-4">
+            <a href="#clases"
+                class="bg-cyan-500 hover:bg-cyan-400 text-black font-black py-4 px-10 rounded-xl transition-all shadow-lg shadow-cyan-500/20 text-[10px] uppercase tracking-widest">
+                Ir a Clases
+            </a>
+            <a href="#proyectos"
+                class="bg-white/5 border border-white/10 text-current py-4 px-10 rounded-xl text-[10px] uppercase font-bold hover:bg-white/10 transition-all">
+                Salón de la Fama
+            </a>
         </div>
-    </header>
+    </div>
+</header>
 
     <main class="max-w-7xl mx-auto px-6 space-y-24 pb-32">
 
@@ -413,7 +418,7 @@
             if (idClase === 'C01') {
                 contenido.innerHTML = `
                     <button onclick="cerrarClase()" class="mb-12 text-cyan-500 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 hover:translate-x-[-5px] transition-all">
-                        <i class="fa-solid fa-arrow-left"></i> Volver al Dashboard
+                        <i class="fa-solid fa-arrow-left"></i> A PANEL DE TMA
                     </button>
                     <header class="mb-12">
                      
@@ -423,18 +428,25 @@
                         <div class="glass-panel p-8 rounded-[2.5rem] border-white/5 space-y-6">
                             <h4 class="text-cyan-500 font-bold text-xs uppercase tracking-[0.2em]">01. Presentación - Herramientas - Bibliografía: Cuestionario 01  </h4>
                             <div class="space-y-3">
-                                ${itemExcel("Inscripción en Classroom", "Siga los siguientes pasos que se indican a continuacion", "fa-user-plus", 
-                                 "1. Instale Google Classroom en su celular.<br>\
-                                 2. Una vez en Classroom, inscríbase con el código w5lb2lx.<br>\
-                                 3. Verifique si recibió un e-mail con la confirmación de su inscripción.<br>\
-                                 4. 📢 IMPORTANTE: Confirme con el docente su inscripción a esta materia.")}
-                                ${itemExcel("Programa TMA 2026", "Estructura de la materia y contenidos", "fa-user-plus", 
-                                "1. Puede descargar el Programa de este Materia desde el Drive la materia haciendo click en la Ventana 04. Bibliografia y Recursos.")}
-                                ${itemExcel("¿Qué es el TMA?", "Importancia del espacio", "fa-car-side", 
-                                "EL TMA es un trayecto formativo que integra seguridad industrial, metrología de precisión y técnicas de mecanizado, ajuste, herreria y soldadura.<br><br>\
-                                A través de prácticas en el uso de herramientas variadas, los alumnos desarrollan destreza técnica para ejecutar proyectos reales y el mantenimiento de equipos.")}
-                                ${itemExcel("Evaluaciones", "¿Cómo aprobamos?", "fa-clipboard-check")}
-                                ${itemExcel("Proyecto Final", "Idea, integrantes y fechas clave", "fa-diagram-project")}
+  
+${itemExcel("Inscripción en Classroom", "¡Sumate a nuestra comunidad digital!", "fa-right-to-bracket", 
+"1. Instalá la app de Google Classroom en tu celular.<br>2. Una vez dentro, unite a la clase con el código: <b>w5lb2lx</b>.<br>3. 📢 <b>¡IMPORTANTE!:</b> No olvides de confirmar con el profe tu inscripción.")}
+
+${itemExcel("Programa TMA 2026", "Todo lo que vas a aprender este año", "fa-file-pdf", 
+"Podés descargar el Programa completo de la materia entrando a la sección <b>RECURSOS DE CLASE -> DRIVE DE LA MATERIA</b>. ¡Miralo para conocer tus próximos desafíos!")}
+
+${itemExcel("¿Qué es el TMA?", "Tu espacio para crear y aprender", "fa-gears", 
+"¡Bienvenidos al Taller! Este es el lugar donde la teoría se convierte en acción. Si te gusta la mecánica el taller siempre es un lugar donde queremos estar, aquí entre otras cosas aprenderemos de seguridad industrial, metrología de precisión y técnicas de mecanizado, ajuste, herrería, soldadura, entre otras cosas.<br><br>🛠️ <b>¡APROVECHALO!:</b> Es tu oportunidad para amigarte con las herramientas y trabajar en equipo creando proyectos reales, útiles y sobre todo, divertidos.")}
+
+${itemExcel("Evaluaciones", "¿Cómo aprobamos?", "fa-chart-line", 
+"¡Hola! En este taller cada paso cuenta. Para aprobar la materia necesitás 60 puntos, y si llegás a los 80, ¡la promocionás!<br><br>La nota final se arma sumando todo lo que hacés:<br><br>1. 📝 <b>Cuestionarios:</b> Preguntas al terminar cada tema. No tienen recuperatorio, ¡aprovechalos!<br>2. 🗓️ <b>Asistencia:</b> Venir a clase te suma puntos directamente.<br>3. 🛠️ <b>Proyecto:</b> Tu esfuerzo en el taller es la parte clave, es lo que te suma más puntos.<br><br>📢 <b>¡DATO IMPORTANTE!:</b> Los alumnos libres deben recursar. Si algo te sale mal, ¡no te rindas! Aunque tengas un cero en alguno de los ítems anteriores, todo se promedia al final. ¡Siempre podés remontarla!")}
+
+${itemExcel("¡Proyecto que considerar!", "El taller es tu laboratorio de ideas", "fa-fire", 
+"¡Este es tu momento! En el Proyecto Final lo más importante es que te animes a crear algo único o útil para tu taller. Mirá cómo podés sacar más puntos:<br><br>1. 🛡️ <b>Misión Seguridad:</b> Demostrá tu profesionalismo usando siempre tus EPP y cuidando tus herramientas.<br>2. ♻️ <b>Poder Reciclado:</b> ¡Dale una segunda vida a los materiales! El uso inteligente de recursos reciclados te suma muchísimos puntos.<br>3. 💡 <b>Chispa Creativa:</b> Siempre se premia tu originalidad y esas soluciones tecnológicas que solo a vos se te ocurren. <br>4. 🧹 <b>Zona Impecable:</b> Un buen técnico mantiene su espacio ordenado y seguro. ¡Es parte de tu marca personal! <br><br>🚀 <b>EL DESAFÍO:</b> Calidad, compromiso y mucha creatividad. ¡Veamos de qué somos capaces! ")}
+
+${itemExcel("¡Arrancamos!", "Poné primera y empezá a sumar", "fa-rocket", 
+"¡Bienvenido al taller! El primer paso para el éxito es el <b>Cuestionario N°1</b>. Solo tenés que completar tus datos y confirmar que ya sabés cómo vamos a trabajar.<br><br>🚀 <b>¡DATO CLAVE!:</b> En el Classroom el Profe pondrá un acceso al primer cuestionario, completarlo es fundamental. ¡No te quedes afuera!")}
+
                             </div>
                         </div>
                         <div class="glass-panel p-8 rounded-[2.5rem] border-white/5 space-y-6">
