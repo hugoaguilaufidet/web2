@@ -31,27 +31,6 @@
             color: #1a1a1a;
         }
 
-        /* --- NUEVA ANIMACIÓN DE MOVIMIENTO PARA FOTOS --- */
-        @keyframes kenburns {
-            0% {
-                transform: scale(1) translate(0, 0);
-            }
-
-            50% {
-                transform: scale(1.15) translate(-1%, -1%);
-            }
-
-            100% {
-                transform: scale(1) translate(0, 0);
-            }
-        }
-
-        .animate-video-bg {
-            animation: kenburns 20s ease-in-out infinite;
-        }
-
-        /* ----------------------------------------------- */
-
         .text-gradient-cyan {
             background: linear-gradient(90deg, var(--cyan-electric), var(--blue-deep), var(--cyan-electric));
             background-size: 200% auto;
@@ -161,7 +140,7 @@
 
         <section>
             <div class="section-divider">
-                <h2 class="text-2xl font-black uppercase italic tracking-tighter">Cronograma de Clases</h2>
+                <h2 class="text-2xl font-black uppercase italic tracking-tighter">Cronograma de Clases
             </div>
             <div class="sheet-container h-[600px] w-full">
                 <iframe
@@ -223,18 +202,7 @@
                                 <p class="text-[10px] text-gray-500 italic">¿Cómo aprobamos?</p>
                             </div>
                         </div>
-
-                        <div onclick="mostrarInfo('05 - Prioridades del Proyecto', 
-                            '¡Este es tu momento! El Proyecto Final será un **video documental** que iremos construyendo a lo largo del cuatrimestre. Mirá las pautas clave:<br><br>' +
-                            '1. 📹 **Registro Continuo:** Deberás filmar el proceso mostrando el uso de herramientas de trabajo y EPPs.<br>' +
-                            '2. 🎬 **Producción:** El video debe estar editado y compaginado para tener coherencia narrativa, ya que el video en sí mismo será el objeto de evaluación.<br>' +
-                            '3. 🚀 **Entrega Final:** Una vez terminado, subilo a **YouTube** y compartí el enlace directo con el profesor.<br><br>' +
-                            '**Criterios de evaluación en el taller:**<br>' +
-                            '• 🛡️ **Seguridad:** Uso constante de EPP y cuidado de herramientas.<br>' +
-                            '• ♻️ **Reciclado:** Uso inteligente y creativo de materiales recuperados.<br>' +
-                            '• 💡 **Originalidad:** Soluciones tecnológicas propias y chispa creativa.<br>' +
-                            '• 🧹 **Orden:** Mantener la zona impecable es parte de tu marca profesional.<br><br>' +
-                            '🚀 **EL DESAFÍO:** ¡Calidad, compromiso y mucha creatividad! veamos de qué somos capaces.')"
+                        <div onclick="mostrarInfo('05 - Prioridades del Proyecto', '¡Este es tu momento! En el Proyecto Final lo más importante es que te animes a crear algo único o útil para tu taller. Mirá cómo podés sacar más puntos:<br><br>1. 🛡️ <b>Misión Seguridad:</b> Demostrá tu profesionalismo usando siempre tus EPP y cuidando tus herramientas.<br>2. ♻️ <b>Poder Reciclado:</b> ¡Dale una segunda vida a los materiales! El uso inteligente de recursos reciclados te suma muchísimos puntos.<br>3. 💡 <b>Chispa Creativa:</b> Siempre se premia tu originalidad y esas soluciones tecnológicas que solo a vos se te ocurren. <br>4. 🧹 <b>Zona Impecable:</b> Un buen técnico mantiene su espacio ordenado y seguro. ¡Es parte de tu marca personal! <br><br>🚀 <b>EL DESAFÍO:</b> Calidad, compromiso y mucha creatividad. ¡Veamos de qué somos capaces! ')"
                             class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
                             <div
                                 class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
@@ -243,6 +211,17 @@
                             <div>
                                 <p class="text-xs font-bold uppercase">05 - Prioridades del Proyecto</p>
                                 <p class="text-[10px] text-gray-500 italic">El taller es tu laboratorio de ideas</p>
+                            </div>
+                        </div>
+                        <div onclick="mostrarInfo('06 - ¡Arrancamos!', 'Poné primera y empezá a sumar...')"
+                            class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
+                            <div
+                                class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
+                                <i class="fa-solid fa-rocket"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold uppercase">06 - ¡Arrancamos!</p>
+                                <p class="text-[10px] text-gray-500 italic">Poné primera y empezá a sumar</p>
                             </div>
                         </div>
                     </div>
@@ -329,7 +308,7 @@
         <section id="proyectos">
             <div class="section-divider">
                 <h2 class="text-2xl font-black uppercase italic tracking-tighter flex items-center gap-3">
-                    <i class="fa-solid fa-trophy text-yellow-500"></i> Salón de la Fama, proyectos de alumnos 2025
+                    <i class="fa-solid fa-trophy text-yellow-500"></i> Salón de la Fama
                 </h2>
             </div>
 
@@ -338,14 +317,14 @@
                 <a href="https://www.youtube.com/watch?v=pg637DkEluQ" target="_blank" rel="noopener noreferrer"
                     class="group relative h-[350px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl block bg-black">
 
-                    <img src="https://img.youtube.com/vi/pg637DkEluQ/maxresdefault.jpg"
-                        class="absolute inset-0 w-full h-full object-cover opacity-40 animate-video-bg transition-opacity duration-500 group-hover:opacity-60">
+                    <!-- <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1000&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-60"> -->
 
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
 
                     <div class="absolute inset-0 flex items-center justify-center">
                         <div
-                            class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(220,38,38,0.5)] transform transition-all duration-500 group-hover:scale-125">
+                            class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg transform transition-transform group-hover:scale-125">
                             <i class="fa-solid fa-play text-white text-2xl ml-1"></i>
                         </div>
                     </div>
@@ -357,25 +336,25 @@
                     </div>
                 </a>
 
-                <a href="https://www.youtube.com/watch?v=mjr5fA96SvI" target="_blank" rel="noopener noreferrer"
+                <a href="https://www.youtube.com/watch?v=wpoOebVoO14" target="_blank" rel="noopener noreferrer"
                     class="group relative h-[350px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl block bg-black">
 
-                    <img src="https://img.youtube.com/vi/mjr5fA96SvI/maxresdefault.jpg"
-                        class="absolute inset-0 w-full h-full object-cover opacity-40 animate-video-bg transition-opacity duration-500 group-hover:opacity-60">
+                    <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45f7?q=80&w=1000&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-60">
 
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
 
                     <div class="absolute inset-0 flex items-center justify-center">
                         <div
-                            class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(220,38,38,0.5)] transform transition-all duration-500 group-hover:scale-125">
+                            class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg transform transition-transform group-hover:scale-125">
                             <i class="fa-solid fa-play text-white text-2xl ml-1"></i>
                         </div>
                     </div>
 
                     <div class="absolute bottom-0 left-0 p-8">
-                        <span class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest">Proyecto
-                            Destacado</span>
-                        <h4 class="text-3xl font-black italic uppercase text-white">Escritorio para taller mecánico</h4>
+                        <span class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest">Tutorial
+                            Técnico</span>
+                        <h4 class="text-3xl font-black italic uppercase text-white">Tablas de Roscas</h4>
                     </div>
                 </a>
 
