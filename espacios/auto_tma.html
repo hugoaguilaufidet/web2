@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMA 2026 | Máquinas & Herramientas Básicas I</title>
+    <title>TMA 2026 | Centro de Comando</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -21,9 +21,8 @@
             scroll-behavior: smooth;
         }
 
-        /* Estilos de Modo */
         body.dark-mode { background-color: #000; color: white; }
-        body.light-mode { background-color: #f8fafc; color: #0f172a; }
+        body.light-mode { background-color: #f0f4f8; color: #1a1a1a; }
 
         .text-gradient-cyan {
             background: linear-gradient(90deg, var(--cyan-electric), var(--blue-deep), var(--cyan-electric));
@@ -32,150 +31,254 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 4s linear infinite;
-            display: inline-block;
         }
 
         @keyframes shine { to { background-position: 200% center; } }
 
-        .sheet-container {
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            border-radius: 2rem;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 40px rgba(0, 255, 255, 0.1);
+        .glass-panel {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 255, 255, 0.1);
         }
 
-        /* Botón de cambio de modo */
+        .dark-mode .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); }
+        .light-mode .glass-panel { background: rgba(255, 255, 255, 0.9); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); }
+
+        .glass-panel:hover {
+            border-color: var(--cyan-electric);
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+        }
+
+        .sheet-container {
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 2.5rem;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
         #mode-toggle {
             position: fixed; bottom: 30px; right: 30px; z-index: 100;
             width: 55px; height: 55px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: all 0.3s ease;
+            cursor: pointer;
         }
-        .dark-mode #mode-toggle { background: white; color: black; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
-        .light-mode #mode-toggle { background: #0f172a; color: white; box-shadow: 0 0 20px rgba(0,0,0,0.2); }
+        .dark-mode #mode-toggle { background: white; color: black; }
+        .light-mode #mode-toggle { background: black; color: white; }
 
-        /* Ajuste de Navbar en Modo Claro */
-        .light-mode nav { background-color: rgba(255, 255, 255, 0.8); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .section-divider {
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
     </style>
 </head>
 
 <body class="dark-mode">
 
-    <div id="mode-toggle" onclick="toggleMode()">
-        <i id="mode-icon" class="fa-solid fa-sun text-xl"></i>
+    <div id="custom-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center px-4">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="cerrarModal()"></div>
+        <div class="glass-panel p-8 rounded-[2.5rem] border-cyan-500/50 bg-[#0a0a0a] max-w-md w-full relative z-10 scale-100 transition-all">
+            <h5 id="modal-titulo" class="text-cyan-500 font-black uppercase tracking-widest mb-4 italic text-sm"></h5>
+            <div id="modal-mensaje" class="text-white text-xs font-light leading-relaxed mb-6"></div>
+            <button onclick="cerrarModal()" class="w-full py-4 bg-cyan-500 text-black font-black rounded-xl uppercase text-[10px] tracking-widest hover:bg-white transition-all shadow-lg shadow-cyan-500/20">
+                Entendido
+            </button>
+        </div>
     </div>
 
-    <nav class="fixed top-0 w-full z-50 px-6 py-4 bg-black/80 backdrop-blur-md border-b border-white/5" id="navbar">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            
-            <div class="flex items-center gap-6">
-                <a href="../index.html" class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all group">
-                    <i class="fa-solid fa-arrow-left text-xs group-hover:-translate-x-1 transition-transform"></i>
-                    <span class="text-[10px] font-bold uppercase tracking-widest">Volver</span>
-                </a>
-                <div class="hidden sm:block text-cyan-500 font-black italic tracking-tighter">
-                    TMA <span class="text-xs font-light not-italic text-gray-500">v2026</span>
-                </div>
-            </div>
+    <div id="mode-toggle" onclick="toggleMode()">
+        <i id="mode-icon" class="fa-solid fa-sun"></i>
+    </div>
 
-            <div class="flex gap-6 text-[10px] font-bold uppercase tracking-widest">
-                <a href="#cronograma" class="hover:text-cyan-400 transition-colors">Cronograma</a>
-                <a href="#video" class="hover:text-cyan-400 transition-colors">Video</a>
-                <a href="#fame" class="hover:text-cyan-400 transition-colors hidden md:block">Hall of Fame</a>
-            </div>
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 px-6 py-4 bg-black/80 backdrop-blur-md" id="navbar">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-2 text-cyan-500 font-bold text-[10px] uppercase tracking-widest hover:text-white transition-colors">
+                <i class="fa-solid fa-house-chimney"></i> Volver al Inicio
+            </a>
+            <div class="text-cyan-500 font-black italic">TMA <span class="text-xs font-light not-italic text-gray-500">v2026</span></div>
         </div>
     </nav>
 
-    <header class="relative pt-48 pb-16 px-6">
-        <div class="max-w-6xl mx-auto text-center md:text-left">
-            <p class="text-cyan-500 font-bold tracking-[0.3em] uppercase text-[10px] mb-4">Unidad de Formación en Autotrónica</p>
-            <h1 class="text-4xl md:text-7xl font-black italic uppercase tracking-tighter leading-none mb-8">
-                <span class="text-gradient-cyan">Máquinas & Herramientas Básicas I</span>
-            </h1>
-        </div>
-    </header>
+    <main class="max-w-7xl mx-auto px-6 space-y-20 pt-32 pb-32">
 
-    <main class="max-w-7xl mx-auto px-6 space-y-32 pb-32">
-        
-        <section id="cronograma" class="space-y-8">
-            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-4">
-                <h2 class="text-2xl font-black uppercase italic tracking-tighter">Cronograma de Clases</h2>
-                <span class="text-cyan-500 text-[10px] font-bold animate-pulse">● EN VIVO</span>
+        <section>
+            <div class="section-divider">
+                <h2 class="text-2xl font-black uppercase italic tracking-tighter">Cronograma de Clases
+            </div>
+            <div class="sheet-container h-[600px] w-full">
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vToTXLDQs_4jsoloOBLhaHbrn9wbSXGQcfBP41pAUQZ7kx1vU2jL6BDiXpkfSVFFzcN-TS5c4fKqmfs/pubhtml" class="w-full h-full border-none"></iframe>
+            </div>
+        </section>
+
+        <section id="preguntas">
+            <div class="section-divider">
+                <h2 class="text-2xl font-black uppercase italic tracking-tighter">Preguntas más frecuentes</h2>
             </div>
             
-            <div class="sheet-container h-[600px] w-full">
-                <iframe 
-                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vToTXLDQs_4jsoloOBLhaHbrn9wbSXGQcfBP41pAUQZ7kx1vU2jL6BDiXpkfSVFFzcN-TS5c4fKqmfs/pubhtml?widget=true&amp;headers=false" 
-                    class="w-full h-full border-none">
-                </iframe>
-            </div>
-        </section>
-
-        <section id="video" class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div class="lg:col-span-2">
-                <h3 class="text-xl font-black uppercase italic mb-6 text-cyan-500">Video destacado</h3>
-                <div class="aspect-video rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-black">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/8aArsTX5wVo" frameborder="0" allowfullscreen></iframe>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="glass-panel p-8 rounded-[2.5rem] space-y-6">
+                    <h4 class="text-cyan-500 font-bold text-xs uppercase tracking-[0.2em]">Guía de Inicio y Cursada</h4>
+                    <div class="space-y-3">
+                        <div onclick="mostrarInfo('01 - Inscripción en Classroom', '¡Sumate a nuestra comunidad digital!<br><br>1. Instalá la app de Google Classroom en tu celular.<br>2. Una vez dentro, unite a la clase con el código: <b>w5lb2lx</b>.<br>3. 📢 <b>¡IMPORTANTE!:</b> No olvides de confirmar con el profe tu inscripción.')" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold uppercase">01 - Inscripción en Classroom</p>
+                                <p class="text-[10px] text-gray-500 italic">¡Sumate a nuestra comunidad digital!</p>
+                            </div>
+                        </div>
+                        <div onclick="mostrarInfo('02 - Programa TMA 2026', 'Todo lo que vas a aprender este año<br><br>Podés descargar el Programa completo de la materia entrando a la sección <b>RECURSOS DE CLASE -> DRIVE DE LA MATERIA</b>. ¡Miralo para conocer tus próximos desafíos!')" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
+                                <i class="fa-solid fa-file-pdf"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold uppercase">02 - Programa TMA 2026</p>
+                                <p class="text-[10px] text-gray-500 italic">Todo lo que vas a aprender este año</p>
+                            </div>
+                        </div>
+                        <div onclick="mostrarInfo('03 - ¿Qué es el TMA?', 'Tu espacio para crear y aprender<br><br>¡Bienvenidos al Taller! Este es el lugar donde la teoría se convierte en acción...')" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
+                                <i class="fa-solid fa-gears"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold uppercase">03 - ¿Qué es el TMA?</p>
+                                <p class="text-[10px] text-gray-500 italic">Tu espacio para crear y aprender</p>
+                            </div>
+                        </div>
+                        <div onclick="mostrarInfo('04 - Evaluaciones', '¿Cómo aprobamos?<br><br>¡Hola! En este taller cada paso cuenta. Para aprobar la materia necesitás 60 puntos...')" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold uppercase">04 - Evaluaciones</p>
+                                <p class="text-[10px] text-gray-500 italic">¿Cómo aprobamos?</p>
+                            </div>
+                        </div>
+                        <div onclick="mostrarInfo('05 - Prioridades del Proyecto', 'El taller es tu laboratorio de ideas...')" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
+                                <i class="fa-solid fa-fire"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold uppercase">05 - Prioridades del Proyecto</p>
+                                <p class="text-[10px] text-gray-500 italic">El taller es tu laboratorio de ideas</p>
+                            </div>
+                        </div>
+                        <div onclick="mostrarInfo('06 - ¡Arrancamos!', 'Poné primera y empezá a sumar...')" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
+                                <i class="fa-solid fa-rocket"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold uppercase">06 - ¡Arrancamos!</p>
+                                <p class="text-[10px] text-gray-500 italic">Poné primera y empezá a sumar</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="flex flex-col justify-center">
-                <div class="p-8 rounded-[2rem] border border-cyan-500/20 bg-cyan-500/5 backdrop-blur-md">
-                    <h4 class="font-bold mb-6 text-cyan-500 uppercase text-xs tracking-widest">Documentación</h4>
-                    <div class="space-y-4">
-                        <button class="w-full py-4 px-5 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-[10px] font-black border border-white/10 flex items-center justify-between group">
-                            DESCARGAR MANUAL <i class="fa-solid fa-file-pdf text-lg"></i>
-                        </button>
-                        <button class="w-full py-4 px-5 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-[10px] font-black border border-white/10 flex items-center justify-between group">
-                            TABLA DE TOLERANCIAS <i class="fa-solid fa-microchip text-lg"></i>
-                        </button>
+
+                <div class="glass-panel p-8 rounded-[2.5rem] space-y-6">
+                    <h4 class="text-cyan-500 font-bold text-xs uppercase tracking-[0.2em]">Bibliografía y Técnica</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 transition-all">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div>
+                                <p class="text-xs font-bold uppercase">Normas EPP</p>
+                                <p class="text-[10px] text-gray-500 italic">Res. Nacional N° 896</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 transition-all">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500"><i class="fa-solid fa-ruler-combined"></i></div>
+                            <div>
+                                <p class="text-xs font-bold uppercase">Metrología Básica</p>
+                                <p class="text-[10px] text-gray-500 italic">Conceptos fundamentales</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="fame">
-            <h2 class="text-2xl font-black uppercase italic mb-10 flex items-center gap-3">
-                <i class="fa-solid fa-trophy text-yellow-500"></i> Salón de la Fama
-            </h2>
+        <section>
+            <div class="section-divider">
+                <h2 class="text-2xl font-black uppercase italic tracking-tighter">Video Recomendado</h2>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="lg:col-span-2">
+                    <div class="aspect-video rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-black">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/8aArsTX5wVo" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="space-y-6 flex flex-col justify-center">
+                    <div class="p-8 rounded-[2rem] bg-cyan-500/5 border border-cyan-500/20 glass-panel text-center">
+                        <h4 class="font-bold mb-6 text-cyan-500 uppercase text-xs tracking-widest">Recursos Directos</h4>
+                        <button class="w-full py-4 px-4 mb-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-[10px] font-bold border border-white/10 uppercase">TABLA DE ROSCAS</button>
+                        <button class="w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-[10px] font-bold border border-white/10 uppercase">DRIVE MATERIA</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos">
+            <div class="section-divider">
+                <h2 class="text-2xl font-black uppercase italic tracking-tighter flex items-center gap-3">
+                    <i class="fa-solid fa-trophy text-yellow-500"></i> Salón de la Fama
+                </h2>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="group relative h-[350px] rounded-[2.5rem] overflow-hidden border border-white/10">
-                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1000" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent"></div>
-                    <div class="absolute bottom-0 p-8">
-                        <span class="text-cyan-400 font-bold text-[10px] uppercase">Nivel 2 • 2025</span>
-                        <h4 class="text-2xl font-black italic uppercase text-white">Prensa de Taller</h4>
+                <div class="group relative h-[350px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1000&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8">
+                        <span class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest">Nivel 2 • 2025</span>
+                        <h4 class="text-3xl font-black italic uppercase text-white">Prensa de Taller</h4>
                     </div>
                 </div>
-                <div class="group relative h-[350px] rounded-[2.5rem] overflow-hidden border border-white/10">
-                    <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45f7?q=80&w=1000" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent"></div>
-                    <div class="absolute bottom-0 p-8">
-                        <span class="text-cyan-400 font-bold text-[10px] uppercase">Nivel 3 • CNC</span>
-                        <h4 class="text-2xl font-black italic uppercase text-white">Piezas de Motor</h4>
+                <div class="group relative h-[350px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45f7?q=80&w=1000&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8">
+                        <span class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest">Nivel 3 • CNC</span>
+                        <h4 class="text-3xl font-black italic uppercase text-white">Piezas de Motor</h4>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <footer class="py-12 border-t border-white/5 text-center">
-        <p class="text-[9px] text-gray-500 uppercase tracking-[0.5em]">U.F.I.De.T. • Autotrónica • TMA 2026</p>
+    <footer class="py-16 border-t border-white/5 text-center px-6">
+        <p class="text-[10px] text-gray-500 uppercase tracking-[0.6em]">U.F.I.De.T. • Autotrónica • TMA 2026</p>
     </footer>
 
     <script>
         function toggleMode() {
             const body = document.body;
             const icon = document.getElementById('mode-icon');
+            const nav = document.getElementById('navbar');
             if (body.classList.contains('dark-mode')) {
                 body.classList.replace('dark-mode', 'light-mode');
                 icon.classList.replace('fa-sun', 'fa-moon');
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
             } else {
                 body.classList.replace('light-mode', 'dark-mode');
                 icon.classList.replace('fa-moon', 'fa-sun');
+                nav.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
             }
+        }
+
+        function mostrarInfo(titulo, mensaje) {
+            const modal = document.getElementById('custom-modal');
+            document.getElementById('modal-titulo').innerText = titulo;
+            document.getElementById('modal-mensaje').innerHTML = mensaje;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
+
 </html>
