@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMA 2026 | Centro de Comando</title>
+    <title>TMA 2026 | Centro de Comando EAV</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 
         :root {
-            --cyan-electric: #00ffff;
-            --blue-deep: #0066ff;
+            /* CAMBIO A AZUL ELÉCTRICO */
+            --blue-electric: #00d4ff;
+            --blue-deep: #0055ff;
         }
 
         body {
@@ -52,8 +53,8 @@
 
         /* ----------------------------------------------- */
 
-        .text-gradient-cyan {
-            background: linear-gradient(90deg, var(--cyan-electric), var(--blue-deep), var(--cyan-electric));
+        .text-gradient-blue {
+            background: linear-gradient(90deg, var(--blue-electric), var(--blue-deep), var(--blue-electric));
             background-size: 200% auto;
             background-clip: text;
             -webkit-background-clip: text;
@@ -69,7 +70,7 @@
 
         .glass-panel {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
 
         .dark-mode .glass-panel {
@@ -83,13 +84,13 @@
         }
 
         .glass-panel:hover {
-            border-color: var(--cyan-electric);
+            border-color: var(--blue-electric);
             transform: translateY(-5px);
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 123, 255, 0.2);
         }
 
         .sheet-container {
-            border: 1px solid rgba(0, 255, 255, 0.2);
+            border: 1px solid rgba(0, 123, 255, 0.2);
             border-radius: 2.5rem;
             overflow: hidden;
             background: rgba(0, 0, 0, 0.2);
@@ -140,7 +141,7 @@
         }
 
         .section-divider {
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 123, 255, 0.2);
             padding-bottom: 1.5rem;
             margin-bottom: 2.5rem;
         }
@@ -152,11 +153,11 @@
     <div id="custom-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center px-4">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="cerrarModal()"></div>
         <div
-            class="glass-panel p-8 rounded-[2.5rem] border-cyan-500/50 bg-[#0a0a0a] max-w-md w-full relative z-10 scale-100 transition-all">
-            <h5 id="modal-titulo" class="text-cyan-500 font-black uppercase tracking-widest mb-4 italic text-sm"></h5>
+            class="glass-panel p-8 rounded-[2.5rem] border-blue-500/50 bg-[#0a0a0a] max-w-md w-full relative z-10 scale-100 transition-all">
+            <h5 id="modal-titulo" class="text-blue-500 font-black uppercase tracking-widest mb-4 italic text-sm"></h5>
             <div id="modal-mensaje" class="text-white text-xs font-light leading-relaxed mb-6"></div>
             <button onclick="cerrarModal()"
-                class="w-full py-4 bg-cyan-500 text-black font-black rounded-xl uppercase text-[10px] tracking-widest hover:bg-white transition-all shadow-lg shadow-cyan-500/20">
+                class="w-full py-4 bg-blue-500 text-white font-black rounded-xl uppercase text-[10px] tracking-widest hover:bg-white hover:text-black transition-all shadow-lg shadow-blue-500/20">
                 Entendido
             </button>
         </div>
@@ -169,10 +170,10 @@
     <nav class="fixed top-0 w-full z-50 border-b border-white/5 px-6 py-4 bg-black/80 backdrop-blur-md" id="navbar">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="../index.html"
-                class="flex items-center gap-2 text-cyan-500 font-bold text-[10px] uppercase tracking-widest hover:text-white transition-colors">
+                class="flex items-center gap-2 text-blue-500 font-bold text-[10px] uppercase tracking-widest hover:text-white transition-colors">
                 <i class="fa-solid fa-house-chimney"></i> Volver al Inicio
             </a>
-            <div class="text-cyan-500 font-black italic">TMA <span
+            <div class="text-blue-500 font-black italic">TMA <span
                     class="text-xs font-light not-italic text-gray-500">v2026</span></div>
         </div>
     </nav>
@@ -190,7 +191,7 @@
             <div class="flex justify-center">
                 <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vToTXLDQs_4jsoloOBLhaHbrn9wbSXGQcfBP41pAUQZ7kx1vU2jL6BDiXpkfSVFFzcN-TS5c4fKqmfs/pubhtml" 
                    target="_blank" 
-                   class="flex items-center gap-2 px-6 py-3 rounded-full border border-cyan-500/30 text-cyan-500 text-[10px] font-bold uppercase tracking-widest hover:bg-cyan-500 hover:text-black transition-all">
+                   class="flex items-center gap-2 px-6 py-3 rounded-full border border-blue-500/30 text-blue-500 text-[10px] font-bold uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all">
                     <i class="fa-solid fa-up-right-from-square"></i> Abrir hoja en pestaña separada
                 </a>
             </div>
@@ -203,12 +204,12 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div class="glass-panel p-8 rounded-[2.5rem] space-y-6">
-                    <h4 class="text-cyan-500 font-bold text-xs uppercase tracking-[0.2em]">Guía de Inicio y Cursada</h4>
+                    <h4 class="text-blue-500 font-bold text-xs uppercase tracking-[0.2em]">Guía de Inicio y Cursada</h4>
                     <div class="space-y-3">
                         <div onclick="mostrarInfo('01 - Inscripción en Classroom', '¡Sumate a nuestra comunidad digital!<br><br>1. Instalá la app de Google Classroom en tu celular.<br>2. Una vez dentro, unite a la clase con el código: <b>w5lb2lx</b>.<br>3. 📢 <b>¡IMPORTANTE!:</b> No olvides de confirmar con el profe tu inscripción.')"
                             class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
                             <div
-                                class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
+                                class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-black">
                                 <i class="fa-solid fa-right-to-bracket"></i>
                             </div>
                             <div>
@@ -219,7 +220,7 @@
                         <div onclick="mostrarInfo('02 - Programa TMA 2026', 'Todo lo que vas a aprender este año<br><br>Podés descargar el Programa completo de la materia entrando a la sección <b>CRONOGRAMA DE CLASES -> RECURSOS DE LA MATERIA -> DRIVE DE CON LOS TEMAS DESARROLLADOS EN CLASE</b>. ¡Miralo para conocer tus próximos desafíos!')"
                             class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
                             <div
-                                class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
+                                class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-black">
                                 <i class="fa-solid fa-file-pdf"></i>
                             </div>
                             <div>
@@ -230,7 +231,7 @@
                         <div onclick="mostrarInfo('03 - ¿Qué es el TMA?', 'Tu espacio para crear y aprender<br><br>¡Bienvenidos al Taller! Este es el lugar donde la teoría se convierte en acción. Si te gusta la mecánica el taller siempre es un lugar donde queremos estar, aquí entre otras cosas aprenderemos de seguridad industrial, metrología de precisión y técnicas de mecanizado, ajuste, herrería, soldadura, entre otras cosas.<br><br>🛠️ <b>¡APROVECHALO!:</b> Es tu oportunidad para amigarte con las herramientas y trabajar en equipo creando proyectos reales, útiles y sobre todo, divertidos.')"
                             class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
                             <div
-                                class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
+                                class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-black">
                                 <i class="fa-solid fa-gears"></i>
                             </div>
                             <div>
@@ -241,7 +242,7 @@
                         <div onclick="mostrarInfo('04 - Evaluaciones', '¿Cómo aprobamos?<br><br>¡Hola! En este taller cada paso cuenta. Para aprobar la materia necesitás 60 puntos, y si llegás a los 80, ¡la promocionás!<br><br>La nota final se arma sumando todo lo que hacés:<br><br>1. 📝 <b>Cuestionarios:</b> Preguntas al terminar cada tema. No tienen recuperatorio, ¡aprovechalos!<br>2. 🗓️ <b>Asistencia:</b> Venir a clase te suma puntos directamente.<br>3. 🛠️ <b>Proyecto:</b> Tu esfuerzo en el taller es la parte clave, es lo que te suma más puntos.<br><br>📢 <b>¡DATO IMPORTANTE!:</b> Los alumnos libres deben recursar. Si algo te sale mal, ¡no te rindas! Aunque tengas un cero en alguno de los ítems anteriores, todo se promedia al final. ¡Siempre podés remontarla!')"
                             class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
                             <div
-                                class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
+                                class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-black">
                                 <i class="fa-solid fa-chart-line"></i>
                             </div>
                             <div>
@@ -258,7 +259,7 @@
                             
                             class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 cursor-pointer group transition-all">
                             <div
-                                class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500 group-hover:bg-cyan-500 group-hover:text-black">
+                                class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-black">
                                 <i class="fa-solid fa-fire"></i>
                             </div>
                             <div>
@@ -270,11 +271,11 @@
                 </div>
 
                 <div class="glass-panel p-8 rounded-[2.5rem] space-y-6">
-                    <h4 class="text-cyan-500 font-bold text-xs uppercase tracking-[0.2em]">Bibliografía y Técnica</h4>
+                    <h4 class="text-blue-500 font-bold text-xs uppercase tracking-[0.2em]">Bibliografía y Técnica</h4>
                     <div class="space-y-3">
                         <div class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 transition-all">
                             <div
-                                class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500">
+                                class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
                                 <i class="fa-solid fa-shield-halved"></i>
                             </div>
                             <div>
@@ -284,7 +285,7 @@
                         </div>
                         <div class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 transition-all">
                             <div
-                                class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-500">
+                                class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
                                 <i class="fa-solid fa-ruler-combined"></i>
                             </div>
                             <div>
@@ -310,34 +311,34 @@
                     </div>
                 </div>
                 <div class="space-y-6 flex flex-col justify-center">
-                    <div class="p-8 rounded-[2rem] bg-cyan-500/5 border border-cyan-500/20 glass-panel text-center">
-                        <h4 class="font-bold mb-6 text-cyan-500 uppercase text-xs tracking-widest">Recursos Directos
+                    <div class="p-8 rounded-[2rem] bg-blue-500/5 border border-blue-500/20 glass-panel text-center">
+                        <h4 class="font-bold mb-6 text-blue-500 uppercase text-xs tracking-widest">Recursos Directos
                         </h4>
                         <a href="https://www.youtube.com/watch?v=SJTwJdjGxlE" target="_blank" rel="noopener noreferrer"
                             class="block w-full">
                             <button
-                                class="w-full py-4 px-4 mb-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-[10px] font-bold border border-white/10 uppercase">
+                                class="w-full py-4 px-4 mb-4 rounded-xl bg-white/5 hover:bg-blue-500 hover:text-black transition-all text-[10px] font-bold border border-white/10 uppercase">
                                 ¿QUÉ SON LAS PULGADAS?
                             </button>
                         </a>
                         <a href="https://www.youtube.com/watch?v=5AqFALY7AEo&t=2s" target="_blank"
                             rel="noopener noreferrer" class="block w-full">
                             <button
-                                class="w-full py-4 px-4 mb-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-[10px] font-bold border border-white/10 uppercase">
+                                class="w-full py-4 px-4 mb-4 rounded-xl bg-white/5 hover:bg-blue-500 hover:text-black transition-all text-[10px] font-bold border border-white/10 uppercase">
                                 ¿DE PULGADAS A MILÍMETROS?...
                             </button>
                         </a>
                         <a href="https://www.youtube.com/watch?v=wpoOebVoO14" target="_blank" rel="noopener noreferrer"
                             class="block w-full">
                             <button
-                                class="w-full py-4 px-4 mb-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-[10px] font-bold border border-white/10 uppercase">
+                                class="w-full py-4 px-4 mb-4 rounded-xl bg-white/5 hover:bg-blue-500 hover:text-black transition-all text-[10px] font-bold border border-white/10 uppercase">
                                 IDENTIFICACIÓN DE ROSCAS
                             </button>
                         </a>
                         <a href="https://drive.google.com/drive/folders/1RrDWUBGZt5Qfkx5P9ah900tc02OfOMYJ"
                             target="_blank" rel="noopener noreferrer">
                             <button
-                                class="w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-cyan-500 hover:text-black transition-all text-[10px] font-bold border border-white/10 uppercase">
+                                class="w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-blue-500 hover:text-black transition-all text-[10px] font-bold border border-white/10 uppercase">
                                 DRIVE MATERIA
                             </button>
                         </a>
@@ -372,7 +373,7 @@
                     </div>
 
                     <div class="absolute bottom-0 left-0 p-8">
-                        <span class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest">Proyecto
+                        <span class="text-blue-400 font-bold text-[10px] uppercase tracking-widest">Proyecto
                             Destacado</span>
                         <h4 class="text-3xl font-black italic uppercase text-white">Mesa de Trabajo</h4>
                     </div>
@@ -394,7 +395,7 @@
                     </div>
 
                     <div class="absolute bottom-0 left-0 p-8">
-                        <span class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest">Proyecto
+                        <span class="text-blue-400 font-bold text-[10px] uppercase tracking-widest">Proyecto
                             Destacado</span>
                         <h4 class="text-3xl font-black italic uppercase text-white">Escritorio para taller mecánico</h4>
                     </div>
