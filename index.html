@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="img/logo.png">
-    <title>Espacios U.F.I.De.T. - Salta</title>
+    <title>Espacios IES 6036 - Salta</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -19,12 +19,20 @@
         .custom-gradient {
             background: linear-gradient(to top, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.1) 100%);
         }
-        
+
         /* Animación de zoom suave para la imagen de fondo */
         @keyframes kenBurns {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .animate-ken-burns {
@@ -36,8 +44,15 @@
 
         /* Animación de entrada para las tarjetas */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .fade-in-card {
@@ -57,17 +72,25 @@
 
     <div class="flex flex-col lg:flex-row min-h-screen">
 
-        <div class="relative w-full lg:w-[65%] h-[500px] lg:h-auto overflow-hidden border-r border-white/5 bg-[#0a0a0a]">
-            
+        <div
+            class="relative w-full lg:w-[65%] h-[500px] lg:h-auto overflow-hidden border-r border-white/5 bg-[#0a0a0a]">
+
+            <div class="absolute top-0 left-0 w-full p-8 lg:p-20 z-10">
+                <p class="text-white/40 font-black uppercase tracking-[0.3em] text-sm lg:text-base">
+                    U.F.I.De.T. Salta
+                </p>
+            </div>
+
             <div class="absolute inset-0 animate-ken-burns"
                 style="background-image: url('img/technical_student_welcome_v1.png');">
             </div>
+
 
             <div class="absolute inset-0 custom-gradient flex flex-col justify-end p-8 lg:p-20">
                 <div class="bg-cyan-500 w-20 h-1.5 shadow-[0_0_20px_rgba(6,182,212,0.8)] mb-8"></div>
 
                 <h1 class="text-5xl lg:text-7xl font-black mb-6 leading-[0.9] tracking-tighter">
-                    U.F.I.De.T. Salta<br>
+                    I.E.S. 6036 - Salta <br>
                     <span class="text-cyan-400">Innovación y Conocimiento</span>
                 </h1>
 
@@ -76,7 +99,8 @@
                 </p>
 
                 <div class="mt-12 flex items-center gap-6">
-                    <div class="p-2 bg-white w-28 h-28 lg:w-36 lg:h-36 rounded-2xl flex items-center justify-center shadow-2xl flex-shrink-0">
+                    <div
+                        class="p-2 bg-white w-28 h-28 lg:w-36 lg:h-36 rounded-2xl flex items-center justify-center shadow-2xl flex-shrink-0">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hugoaguilaufidet.github.io/web2/"
                             alt="QR" class="w-full h-full">
                     </div>
@@ -92,7 +116,7 @@
         </div>
 
         <div class="w-full lg:w-[35%] p-8 lg:p-12 bg-[#080808] flex flex-col justify-center overflow-y-auto">
-            
+
             <div class="relative mb-12">
                 <div class="absolute -top-4 left-0 w-16 h-1 bg-cyan-500 rounded-full"></div>
                 <h2 class="text-2xl lg:text-3xl font-black uppercase tracking-tighter leading-none">
@@ -104,60 +128,80 @@
 
             <div class="space-y-6">
 
-                <div class="fade-in-card group bg-white/5 border border-white/5 p-6 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.08] hover:border-cyan-500/50 transition-all cursor-pointer" style="animation-delay: 0.2s;">
-                    <div class="w-20 h-20 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-4xl text-cyan-400 border border-cyan-500/20 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all">
+                <div class="fade-in-card group bg-white/5 border border-white/5 p-6 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.08] hover:border-cyan-500/50 transition-all cursor-pointer"
+                    style="animation-delay: 0.2s;">
+                    <div
+                        class="w-20 h-20 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-4xl text-cyan-400 border border-cyan-500/20 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all">
                         <i class="fa-solid fa-gears"></i>
                     </div>
                     <div class="flex-1">
-                        <h3 class="font-black text-xl group-hover:text-cyan-400 transition-colors uppercase italic tracking-tighter">Autotrónica</h3>
+                        <h3
+                            class="font-black text-xl group-hover:text-cyan-400 transition-colors uppercase italic tracking-tighter">
+                            Autotrónica</h3>
                         <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-3">Taller de Máquinas - TMA</p>
                         <a href="espacios/auto_tma.html" class="inline-block">
-                            <button class="px-8 py-3 bg-cyan-600 text-white text-[12px] font-black uppercase tracking-widest rounded-xl hover:bg-cyan-500 hover:scale-105 transition-all shadow-lg shadow-cyan-900/40">
+                            <button
+                                class="px-8 py-3 bg-cyan-600 text-white text-[12px] font-black uppercase tracking-widest rounded-xl hover:bg-cyan-500 hover:scale-105 transition-all shadow-lg shadow-cyan-900/40">
                                 Conocé más <i class="fa-solid fa-arrow-right ml-2"></i>
                             </button>
                         </a>
                     </div>
                 </div>
 
-                <div class="fade-in-card group bg-white/5 border border-white/5 p-6 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.08] hover:border-emerald-500/50 transition-all cursor-pointer" style="animation-delay: 0.4s;">
-                    <div class="w-20 h-20 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-4xl text-emerald-400 border border-emerald-500/20 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all">
+                <div class="fade-in-card group bg-white/5 border border-white/5 p-6 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.08] hover:border-emerald-500/50 transition-all cursor-pointer"
+                    style="animation-delay: 0.4s;">
+                    <div
+                        class="w-20 h-20 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-4xl text-emerald-400 border border-emerald-500/20 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all">
                         <i class="fa-solid fa-microchip"></i>
                     </div>
                     <div class="flex-1">
-                        <h3 class="font-black text-xl group-hover:text-emerald-400 transition-colors uppercase italic tracking-tighter">Biomedicina</h3>
+                        <h3
+                            class="font-black text-xl group-hover:text-emerald-400 transition-colors uppercase italic tracking-tighter">
+                            Biomedicina</h3>
                         <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-3">Instrumentos - IYM</p>
                         <a href="espacios/bio_iym.html" class="inline-block">
-                            <button class="px-8 py-3 bg-emerald-600 text-white text-[12px] font-black uppercase tracking-widest rounded-xl hover:bg-emerald-500 hover:scale-105 transition-all shadow-lg shadow-emerald-900/40">
+                            <button
+                                class="px-8 py-3 bg-emerald-600 text-white text-[12px] font-black uppercase tracking-widest rounded-xl hover:bg-emerald-500 hover:scale-105 transition-all shadow-lg shadow-emerald-900/40">
                                 Conocé más <i class="fa-solid fa-arrow-right ml-2"></i>
                             </button>
                         </a>
                     </div>
                 </div>
 
-                <div class="fade-in-card group bg-white/5 border border-white/5 p-6 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.08] hover:border-purple-500/50 transition-all cursor-pointer" style="animation-delay: 0.6s;">
-                    <div class="w-20 h-20 bg-purple-500/10 rounded-2xl flex items-center justify-center text-4xl text-purple-400 border border-purple-500/20 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] transition-all">
+                <div class="fade-in-card group bg-white/5 border border-white/5 p-6 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.08] hover:border-purple-500/50 transition-all cursor-pointer"
+                    style="animation-delay: 0.6s;">
+                    <div
+                        class="w-20 h-20 bg-purple-500/10 rounded-2xl flex items-center justify-center text-4xl text-purple-400 border border-purple-500/20 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] transition-all">
                         <i class="fa-solid fa-radiation"></i>
                     </div>
                     <div class="flex-1">
-                        <h3 class="font-black text-xl group-hover:text-purple-400 transition-colors uppercase italic tracking-tighter">Biomedicina</h3>
+                        <h3
+                            class="font-black text-xl group-hover:text-purple-400 transition-colors uppercase italic tracking-tighter">
+                            Biomedicina</h3>
                         <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-3">Radiaciones - IRI</p>
                         <a href="espacios/bio_iri.html" class="inline-block">
-                            <button class="px-8 py-3 bg-purple-600 text-white text-[12px] font-black uppercase tracking-widest rounded-xl hover:bg-purple-500 hover:scale-105 transition-all shadow-lg shadow-purple-900/40">
+                            <button
+                                class="px-8 py-3 bg-purple-600 text-white text-[12px] font-black uppercase tracking-widest rounded-xl hover:bg-purple-500 hover:scale-105 transition-all shadow-lg shadow-purple-900/40">
                                 Conocé más <i class="fa-solid fa-arrow-right ml-2"></i>
                             </button>
                         </a>
                     </div>
                 </div>
 
-                <div class="fade-in-card group bg-white/5 border border-white/5 p-6 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.08] hover:border-blue-500/50 transition-all cursor-pointer" style="animation-delay: 0.8s;">
-                    <div class="w-20 h-20 bg-blue-500/10 rounded-2xl flex items-center justify-center text-4xl text-blue-400 border border-blue-500/20 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all">
+                <div class="fade-in-card group bg-white/5 border border-white/5 p-6 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.08] hover:border-blue-500/50 transition-all cursor-pointer"
+                    style="animation-delay: 0.8s;">
+                    <div
+                        class="w-20 h-20 bg-blue-500/10 rounded-2xl flex items-center justify-center text-4xl text-blue-400 border border-blue-500/20 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all">
                         <i class="fa-solid fa-lungs"></i>
                     </div>
                     <div class="flex-1">
-                        <h3 class="font-black text-xl group-hover:text-blue-400 transition-colors uppercase italic tracking-tighter">Biomedicina</h3>
+                        <h3
+                            class="font-black text-xl group-hover:text-blue-400 transition-colors uppercase italic tracking-tighter">
+                            Biomedicina</h3>
                         <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-3">Ventilación - EAV</p>
                         <a href="espacios/bio_eav.html" class="inline-block">
-                            <button class="px-8 py-3 bg-blue-600 text-white text-[12px] font-black uppercase tracking-widest rounded-xl hover:bg-blue-500 hover:scale-105 transition-all shadow-lg shadow-blue-900/40">
+                            <button
+                                class="px-8 py-3 bg-blue-600 text-white text-[12px] font-black uppercase tracking-widest rounded-xl hover:bg-blue-500 hover:scale-105 transition-all shadow-lg shadow-blue-900/40">
                                 Conocé más <i class="fa-solid fa-arrow-right ml-2"></i>
                             </button>
                         </a>
@@ -173,4 +217,5 @@
     </div>
 
 </body>
+
 </html>
